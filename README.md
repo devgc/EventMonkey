@@ -22,3 +22,7 @@ optional arguments:
                         Number of threads to use (default is all cpu's)
   --eshost ESHOST       Elastic Host IP
 ```
+
+## Do Things Like:
+Search for a devices' serial number
+![Image of Device Serial Number Search](https://github.com/devgc/EventMonkey/blob/master/examples/SearchDeviceSerial.png)
