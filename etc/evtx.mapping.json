@@ -1,0 +1,515 @@
+"mappings": {
+	"winevent": {
+		"properties": {
+			"creation_time": {
+				"format": "strict_date_optional_time||epoch_millis",
+				"type": "date"
+			},
+			"computer_name": {
+				"type": "string"
+			},
+			"identifier": {
+				"type": "long"
+			},
+			"index_timestamp": {
+				"format": "strict_date_optional_time||epoch_millis",
+				"type": "date"
+			},
+			"offset": {
+				"type": "long"
+			},
+			"written_time": {
+				"format": "strict_date_optional_time||epoch_millis",
+				"type": "date"
+			},
+			"UserData": {
+				"properties": {
+					"RmRestartEvent": {
+						"properties": {
+							"Applications": {
+								"properties": {
+									"Application": {
+										"properties": {
+											"#text": {
+												"type": "string"
+											}
+										}
+									}
+								}
+							},
+							"RmSessionId": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"nApplications": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"RebootReasons": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					},
+					"EventXML": {
+						"properties": {
+							"binaryData": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"binaryDataSize": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"param1": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"param2": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					},
+					"HungAppEvent": {
+						"properties": {
+							"AppName": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					},
+					"RmApplicationEvent": {
+						"properties": {
+							"AppVersion": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"Status": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"RmSessionId": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"TSSessionId": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"DisplayName": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"nFiles": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"FullPath": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"Pid": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"Files": {
+								"properties": {
+									"File": {
+										"properties": {
+											"#text": {
+												"type": "string"
+											}
+										}
+									}
+								}
+							},
+							"AppType": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					},
+					"RmSessionEvent": {
+						"properties": {
+							"RmSessionId": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"UTCStartTime": {
+								"properties": {
+									"#text": {
+										"format": "strict_date_optional_time||epoch_millis",
+										"type": "date"
+									}
+								}
+							}
+						}
+					},
+					"RmUnsupportedRestartEvent": {
+						"properties": {
+							"AppVersion": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"Status": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"RmSessionId": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"TSSessionId": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"DisplayName": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"FullPath": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"Pid": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"AppType": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"Reason": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					},
+					"VetoAppEvent": {
+						"properties": {
+							"ResponseTime": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"AppName": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					},
+					"data_0x8000003F": {
+						"properties": {
+							"Namespace": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"Provider": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					},
+					"LocationEvent": {
+						"properties": {
+							"FriendlyName": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"Username": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"ImagePath": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"PID": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							},
+							"SID": {
+								"properties": {
+									"#text": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"index": {
+				"type": "long"
+			},
+			"event_category": {
+				"type": "long"
+			},
+			"event_identifier": {
+				"type": "long"
+			},
+			"EventData": {
+				"properties": {
+					"Data": {
+						"properties": {
+							"#text": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							}
+						}
+					},
+					"Binary": {
+						"properties": {
+							"#text": {
+								"type": "string"
+							}
+						}
+					},
+					"Name": {
+						"type": "string"
+					}
+				}
+			},
+			"System": {
+				"properties": {
+					"Correlation": {
+						"properties": {
+							"ActivityID": {
+								"type": "string"
+							}
+						}
+					},
+					"Task": {
+						"properties": {
+							"#text": {
+								"type": "string"
+							}
+						}
+					},
+					"Keywords": {
+						"properties": {
+							"#text": {
+								"type": "string"
+							}
+						}
+					},
+					"Channel": {
+						"properties": {
+							"#text": {
+								"type": "string"
+							}
+						}
+					},
+					"Opcode": {
+						"properties": {
+							"#text": {
+								"type": "string"
+							}
+						}
+					},
+					"Security": {
+						"properties": {
+							"UserID": {
+								"type": "string"
+							}
+						}
+					},
+					"Provider": {
+						"properties": {
+							"EventSourceName": {
+								"type": "string"
+							},
+							"Guid": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							}
+						}
+					},
+					"TimeCreated": {
+						"properties": {
+							"SystemTime": {
+								"format": "strict_date_optional_time||epoch_millis",
+								"type": "date"
+							}
+						}
+					},
+					"EventRecordID": {
+						"properties": {
+							"#text": {
+								"type": "string"
+							}
+						}
+					},
+					"Execution": {
+						"properties": {
+							"ThreadID": {
+								"type": "string"
+							},
+							"ProcessID": {
+								"type": "string"
+							}
+						}
+					},
+					"Version": {
+						"properties": {
+							"#text": {
+								"type": "string"
+							}
+						}
+					},
+					"Computer": {
+						"properties": {
+							"#text": {
+								"type": "string"
+							}
+						}
+					},
+					"EventID": {
+						"properties": {
+							"#text": {
+								"type": "string"
+							},
+							"Qualifiers": {
+								"type": "string"
+							}
+						}
+					},
+					"Level": {
+						"properties": {
+							"#text": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			},
+			"eventfile_type": {
+				"type": "string"
+			},
+			"recovered": {
+				"type": "boolean"
+			},
+			"xmlns": {
+				"type": "string"
+			},
+			"strings": {
+				"type": "string"
+			},
+			"source_filename": {
+				"type": "string"
+			},
+			"source_name": {
+				"type": "string"
+			}
+		}
+	}
+}
