@@ -9,6 +9,8 @@ import json
 import md5
 import datetime
 import re
+import yaml
+import getpass
 
 from elasticsearch import Elasticsearch
 from elasticsearch.helpers import bulk as es_bulk
@@ -19,23 +21,56 @@ logging.getLogger("urllib3").setLevel(logging.ERROR)
 
 ELASTIC_LOGGER = logging.getLogger('ElasticHandler')
 
-class EsConfig():
-    def __init__(self,host=None):
-        self.host = host
+def GetEsOptions(options):
+    es_options = None
+    if options.esconfig is not None:
+        # Load config file #
+        with open(options.esconfig) as fh:
+                es_options = yaml.load(fh)
+    elif options.esurl is not None:
+        # Use URL #
+        es_options = [options.esurl]
+    elif options.eshost is not None:
+        if options.esuser is not None:
+            # Use authentication #
+            http_auth = []
+            es_options = {
+                "hosts":[options.eshost]
+            }
+            http_auth.append(options.esuser)
+            
+            if options.espass is not None:
+                # Append password #
+                http_auth.append(options.espass)
+            else:
+                # Prompt for password #
+                options.espass = getpass.getpass('Enter Password: ')
+                http_auth.append(options.espass)
+                
+            es_options.update(
+                {'http_auth':http_auth}
+            )
+        else:
+            es_options = {
+                'hosts':[options.eshost]
+            }
+    else:
+        raise Exception("No Elastic Host")
+    
+    return es_options
+
+class EsConfig(dict):
+    def __init__(self, options):
+        self.update(options)
         
     def GetEsHandler(self):
-        esHandler = EsHandler(
-            self
-        )
-        
-        return esHandler
+        return EsHandler(self)
     
 class EsHandler():
     def __init__(self,esConfig):
         self.current_index = None
         self.esh = Elasticsearch(
-            esConfig.host,
-            timeout=100000
+            **esConfig
         )
         
     def CheckForIndex(self,index_name):

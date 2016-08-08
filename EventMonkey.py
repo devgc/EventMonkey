@@ -93,12 +93,44 @@ def GetArguements():
     )
     
     arguements.add_argument(
+        '--esconfig',
+        dest='esconfig',
+        action="store",
+        type=unicode,
+        default=None,
+        help='Elastic YAML Config File'
+    )
+    arguements.add_argument(
+        '--esurl',
+        dest='esurl',
+        action="store",
+        type=unicode,
+        default=None,
+        help='Elastic RFC-1738 URL'
+    )
+    arguements.add_argument(
         '--eshost',
         dest='eshost',
         action="store",
         type=str,
         default=None,
         help='Elastic Host IP'
+    )
+    arguements.add_argument(
+        '--esuser',
+        dest='esuser',
+        action="store",
+        type=str,
+        default=None,
+        help='Elastic Host User'
+    )
+    arguements.add_argument(
+        '--espass',
+        dest='espass',
+        action="store",
+        type=unicode,
+        default=None,
+        help='Elastic Password [if not supplied, will prompt]'
     )
     
     return arguements
