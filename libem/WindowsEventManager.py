@@ -21,7 +21,7 @@ import Config
 
 WINEVENT_LOGGER = logging.getLogger('WinEvent')
 
-WINEVENT_MAPPING_FILE = 'etc\\winevent.mapping.json'
+WINEVENT_MAPPING_FILE = 'etc\\evtx.mapping.json'
 
 WINEVENT_COLUMN_ORDER = [
     'we_hash_id',   #Hash of xml event string
