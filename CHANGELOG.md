@@ -1,4 +1,4 @@
-## [1.0.2] - 2016-08-08
+## [1.2.0] - 2016-08-08
 ### Added
 - Methods to add elastic options
   - use elastic config file for complex configurations including using ssl certs
