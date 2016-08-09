@@ -13,7 +13,7 @@ class Config():
 	UI_GUI = 1
 	UI_TYPE = None
 	
-	VERSION = '0.01'
+	VERSION = '1.0.2'
 	STARTTIME = time.time()
 	CPU_COUNT = multiprocessing.cpu_count()
 	CPU_USE = CPU_COUNT
@@ -21,8 +21,8 @@ class Config():
 	
 	BUILD_DATETIME = datetime.datetime(
 		2016, #Year
-		4,  #Month
-		27  #Day
+		8,  #Month
+		8  #Day
 	)
 	
 	@staticmethod
