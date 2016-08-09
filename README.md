@@ -38,6 +38,23 @@ optional arguments:
   --espass ESPASS       Elastic Password [if not supplied, will prompt]
 ```
 
+## Creating Descriptions and Tags
+Description files are located in the etc/descriptions folder. The name of the file is the same as an event's 'System.Channel.#text' field (with a .yml extention).
+
+Example from etc/descriptions/Security.yml:
+```
+4608:
+  description: "Windows is starting up"
+  tags:
+    - "Startup"
+4609:
+  description: "Windows is shutting down"
+  tags: 
+    - "Shutdown"
+```
+
+If an event is from channel Security, it will then look for the EventID number to load the description and tags.
+
 ## Elastic YAML Config File
 You can now use a config file to connect to elastic. This way you can add in SSL certs if needed. Follow the structure of the elasticsearch py api: https://elasticsearch-py.readthedocs.io/en/master/api.html#elasticsearch
 
