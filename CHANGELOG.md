@@ -1,3 +1,7 @@
+## [1.2.1] - 2016-08-09
+### Added
+- Added functionallity to add discriptions and tags to Security events
+
 ## [1.2.0] - 2016-08-08
 ### Added
 - Methods to add elastic options
