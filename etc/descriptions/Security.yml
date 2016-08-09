@@ -1,0 +1,2067 @@
+512:
+  description: "Windows NT is starting up"
+  tags: 
+    - "Startup"
+513:
+  description: "Windows is shutting down"
+  tags:
+    - "Shutdown"
+514:
+  description: "An authentication package has been loaded by the Local Security Authority"
+  tags: None
+515:
+  description: "A trusted logon process has registered with the Local Security Authority"
+  tags: None
+516:
+  description: "Internal resources allocated for the queuing of audit messages have been exhausted, leading to the loss of some audits"
+  tags: None
+517:
+  description: "The audit log was cleared"
+  tags: None
+518:
+  description: "A notification package has been loaded by the Security Account Manager"
+  tags: None
+519:
+  description: "A process is using an invalid local procedure call (LPC) port"
+  tags: None
+520:
+  description: "The system time was changed"
+  tags: None
+521:
+  description: "Unable to log events to security log"
+  tags: None
+528:
+  description: "Successful Logon"
+  tags:
+    - "Logon"
+    - "Success"
+529:
+  description: "Logon Failure - Unknown user name or bad password"
+  tags:
+    - "Logon"
+    - "Failure"
+    - "Warning"
+530:
+  description: "Logon Failure - Account logon time restriction violation"
+  tags:
+    - "Logon"
+    - "Failure"
+531:
+  description: "Logon Failure - Account currently disabled"
+  tags:
+    - "Logon"
+    - "Failure"
+532:
+  description: "Logon Failure - The specified user account has expired"
+  tags:
+    - "Logon"
+    - "Failure"
+533:
+  description: "Logon Failure - User not allowed to logon at this computer"
+  tags:
+    - "Logon"
+    - "Failure"
+534:
+  description: "Logon Failure - The user has not been granted the requested logon type at this machine"
+  tags:
+    - "Logon"
+    - "Failure"
+535:
+  description: "Logon Failure - The specified account's password has expired"
+  tags:
+    - "Logon"
+    - "Failure"
+536:
+  description: "Logon Failure - The NetLogon component is not active"
+  tags:
+    - "Logon"
+    - "Failure"
+537:
+  description: "Logon failure - The logon attempt failed for other reasons."
+  tags:
+    - "Logon"
+    - "Failure"
+538:
+  description: "User Logoff"
+  tags:
+    - "Logoff"
+539:
+  description: "Logon Failure - Account locked out"
+  tags:
+    - "Logon"
+    - "Failure"
+540:
+  description: "Successful Network Logon"
+  tags:
+    - "Logon"
+    - "Success"
+551:
+  description: "User initiated logoff"
+  tags:
+    - "Logoff"
+552:
+  description: "Logon attempt using explicit credentials"
+  tags:
+    - "Logon"
+    - "Failure"
+560:
+  description: "Object Open"
+  tags:
+    - "Object Operation"
+561:
+  description: "Handle Allocated"
+  tags:
+    - "Object Operation"
+562:
+  description: "Handle Closed"
+  tags:
+    - "Object Operation"
+563:
+  description: "Object Open for Delete"
+  tags:
+    - "Object Operation"
+564:
+  description: "Object Deleted"
+  tags:
+    - "Object Operation"
+565:
+  description: "Object Open (Active Directory)"
+  tags:
+    - "Object Operation"
+566:
+  description: "Object Operation (W3 Active Directory)"
+  tags:
+    - "Object Operation"
+567:
+  description: "Object Access Attempt"
+  tags:
+    - "Object Operation"
+    - "Failure"
+576:
+  description: "Special privileges assigned to new logon"
+  tags:
+    - "Warn"
+    - "Privilege"
+577:
+  description: "Privileged Service Called"
+  tags:
+    - "Privilege"
+578:
+  description: "Privileged object operation"
+  tags:
+    - "Privilege"
+592:
+  description: "A new process has been created"
+  tags:
+    - "Process"
+593:
+  description: "A process has exited"
+  tags:
+    - "Process"
+594:
+  description: "A handle to an object has been duplicated"
+  tags:
+    - "Object Operation"
+595:
+  description: "Indirect access to an object has been obtained"
+  tags:
+    - "Object Operation"
+596:
+  description: "Backup of data protection master key"
+  tags: None
+600:
+  description: "A process was assigned a primary token"
+  tags: None
+601:
+  description: "Attempt to install service"
+  tags:
+    - "Install"
+    - "Service"
+602:
+  description: "Scheduled Task created"
+  tags:
+    - "Schedule"
+    - "Task"
+    - "Create"
+608:
+  description: "User Right Assigned"
+  tags: None
+609:
+  description: "User Right Removed"
+  tags: None
+610:
+  description: "New Trusted Domain"
+  tags: None
+611:
+  description: "Removing Trusted Domain"
+  tags: None
+612:
+  description: "Audit Policy Change"
+  tags: None
+613:
+  description: "IPSec policy agent started"
+  tags: None
+614:
+  description: "IPSec policy agent disabled"
+  tags: None
+615:
+  description: "IPSEC PolicyAgent Service"
+  tags: None
+616:
+  description: "IPSec policy agent encountered a potentially serious failure."
+  tags: None
+617:
+  description: "Kerberos Policy Changed"
+  tags: None
+618:
+  description: "Encrypted Data Recovery Policy Changed"
+  tags: None
+619:
+  description: "Quality of Service Policy Changed"
+  tags: None
+620:
+  description: "Trusted Domain Information Modified"
+  tags: None
+621:
+  description: "System Security Access Granted"
+  tags: None
+622:
+  description: "System Security Access Removed"
+  tags: None
+623:
+  description: "Per User Audit Policy was refreshed"
+  tags: None
+624:
+  description: "User Account Created"
+  tags: None
+625:
+  description: "User Account Type Changed"
+  tags: None
+626:
+  description: "User Account Enabled"
+  tags: None
+627:
+  description: "Change Password Attempt"
+  tags: None
+628:
+  description: "User Account password set"
+  tags: None
+629:
+  description: "User Account Disabled"
+  tags: None
+630:
+  description: "User Account Deleted"
+  tags: None
+631:
+  description: "Security Enabled Global Group Created"
+  tags:
+    - "Create"
+    - "Group"
+632:
+  description: "Security Enabled Global Group Member Added"
+  tags:
+    - "Create"
+    - "Group"
+633:
+  description: "Security Enabled Global Group Member Removed"
+  tags:
+    - "Delete"
+    - "Group"
+634:
+  description: "Security Enabled Global Group Deleted"
+  tags:
+    - "Delete"
+    - "Group"
+635:
+  description: "Security Enabled Local Group Created"
+  tags:
+    - "Create"
+    - "Group"
+636:
+  description: "Security Enabled Local Group Member Added"
+  tags:
+    - "Create"
+    - "Group"
+637:
+  description: "Security Enabled Local Group Member Removed"
+  tags:
+    - "Delete"
+    - "Group"
+638:
+  description: "Security Enabled Local Group Deleted"
+  tags:
+    - "Delete"
+    - "Group"
+639:
+  description: "Security Enabled Local Group Changed"
+  tags:
+    - "Change"
+    - "Group"
+640:
+  description: "General Account Database Change"
+  tags:
+    - "Change"
+    - "Account"
+641:
+  description: "Security Enabled Global Group Changed"
+  tags:
+    - "Change"
+    - "Group"
+642:
+  description: "User Account Changed"
+  tags:
+    - "Account"
+    - "Change"
+643:
+  description: "Domain Policy Changed"
+  tags:
+    - "Domain"
+    - "Policy"
+    - "Change"
+644:
+  description: "User Account Locked Out"
+  tags:
+    - "Account"
+    - "Locked"
+645:
+  description: "Computer Account Created"
+  tags:
+    - "Create"
+    - "Account"
+646:
+  description: "Computer Account Changed"
+  tags:
+    - "Change"
+    - "Account"
+647:
+  description: "Computer Account Deleted"
+  tags:
+    - "Delete"
+    - "Account"
+648:
+  description: "Security Disabled Local Group Created"
+  tags: None
+649:
+  description: "Security Disabled Local Group Changed"
+  tags: None
+650:
+  description: "Security Disabled Local Group Member Added"
+  tags: None
+651:
+  description: "Security Disabled Local Group Member Removed"
+  tags: None
+652:
+  description: "Security Disabled Local Group Deleted"
+  tags: None
+653:
+  description: "Security Disabled Global Group Created"
+  tags: None
+654:
+  description: "Security Disabled Global Group Changed"
+  tags: None
+655:
+  description: "Security Disabled Global Group Member Added"
+  tags: None
+656:
+  description: "Security Disabled Global Group Member Removed"
+  tags: None
+657:
+  description: "Security Disabled Global Group Deleted"
+  tags: None
+658:
+  description: "Security Enabled Universal Group Created"
+  tags: None
+659:
+  description: "Security Enabled Universal Group Changed"
+  tags: None
+660:
+  description: "Security Enabled Universal Group Member Added"
+  tags: None
+661:
+  description: "Security Enabled Universal Group Member Removed"
+  tags: None
+662:
+  description: "Security Enabled Universal Group Deleted"
+  tags: None
+663:
+  description: "Security Disabled Universal Group Created"
+  tags: None
+664:
+  description: "Security Disabled Universal Group Changed"
+  tags: None
+665:
+  description: "Security Disabled Universal Group Member Added"
+  tags: None
+666:
+  description: "Security Disabled Universal Group Member Removed"
+  tags: None
+667:
+  description: "Security Disabled Universal Group Deleted"
+  tags: None
+668:
+  description: "Group Type Changed"
+  tags: None
+669:
+  description: "Add SID History"
+  tags: None
+670:
+  description: "Add SID History"
+  tags: None
+671:
+  description: "User Account Unlocked"
+  tags: None
+672:
+  description: "Authentication Ticket Granted"
+  tags: None
+673:
+  description: "Service Ticket Granted"
+  tags: None
+674:
+  description: "Ticket Granted Renewed"
+  tags: None
+675:
+  description: "Pre-authentication failed"
+  tags: None
+676:
+  description: "Authentication Ticket Request Failed"
+  tags: None
+677:
+  description: "Service Ticket Request Failed"
+  tags: None
+678:
+  description: "Account Mapped for Logon by"
+  tags: None
+679:
+  description: "The name: %2 could not be mapped for logon by: %1"
+  tags: None
+680:
+  description: "Account Used for Logon by"
+  tags: None
+681:
+  description: "The logon to account: %2 by: %1 from workstation: %3 failed."
+  tags: None
+682:
+  description: "Session reconnected to winstation"
+  tags: None
+683:
+  description: "Session disconnected from winstation"
+  tags: None
+684:
+  description: "Set ACLs of members in administrators groups"
+  tags:
+    - "Permission"
+685:
+  description: "Account Name Changed"
+  tags: None
+686:
+  description: "Password of the following user accessed"
+  tags: None
+687:
+  description: "Basic Application Group Created"
+  tags:
+    - "Group"
+    - "Create"
+688:
+  description: "Basic Application Group Changed"
+  tags:
+    - "Group"
+    - "Change"
+689:
+  description: "Basic Application Group Member Added"
+  tags:
+    - "Group"
+    - "Create"
+690:
+  description: "Basic Application Group Member Removed"
+  tags:
+    - "Group"
+    - "Delete"
+691:
+  description: "Basic Application Group Non-Member Added"
+  tags:
+    - "Group"
+    - "Create"
+692:
+  description: "Basic Application Group Non-Member Removed"
+  tags:
+    - "Group"
+    - "Delete"
+693:
+  description: "Basic Application Group Deleted"
+  tags:
+    - "Group"
+    - "Delete"
+694:
+  description: "LDAP Query Group Created"
+  tags:
+    - "Group"
+    - "Create"
+695:
+  description: "LDAP Query Group Changed"
+  tags:
+    - "Group"
+    - "Change"
+696:
+  description: "LDAP Query Group Deleted"
+  tags:
+    - "Group"
+    - "Delete"
+697:
+  description: "Password Policy Checking API is called"
+  tags: None
+806:
+  description: "Per User Audit Policy was refreshed"
+  tags: None
+807:
+  description: "Per user auditing policy set for user"
+  tags: None
+808:
+  description: "A security event source has attempted to register"
+  tags: None
+809:
+  description: "A security event source has attempted to unregister"
+  tags: None
+848:
+  description: "The following policy was active when the Windows Firewall started"
+  tags: None
+849:
+  description: "An application was listed as an exception when the Windows Firewall started"
+  tags: None
+850:
+  description: "A port was listed as an exception when the Windows Firewall started"
+  tags: None
+851:
+  description: "A change has been made to the Windows Firewall application exception list"
+  tags: None
+852:
+  description: "A change has been made to the Windows Firewall port exception list"
+  tags: None
+853:
+  description: "The Windows Firewall operational mode has changed"
+  tags:
+    - "Firewall"
+    - "Change"
+854:
+  description: "The Windows Firewall logging settings have changed"
+  tags:
+    - "Firewall"
+    - "Change"
+855:
+  description: "A Windows Firewall ICMP setting has changed"
+  tags:
+    - "Firewall"
+    - "Change"
+856:
+  description: "The Windows Firewall setting to allow unicast responses to multicast/broadcast traffic has changed"
+  tags:
+    - "Firewall"
+    - "Change"
+857:
+  description: "The Windows Firewall setting to allow remote administration, allowing port TCP 135 and DCOM/RPC, has changed"
+  tags:
+    - "Firewall"
+    - "Change"
+858:
+  description: "Windows Firewall group policy settings have been applied"
+  tags:
+    - "Firewall"
+    - "Group"
+    - "Policy"
+859:
+  description: "The Windows Firewall group policy settings have been removed"
+  tags: None
+860:
+  description: "The Windows Firewall has switched the active policy profile"
+  tags: None
+861:
+  description: "The Windows Firewall has detected an application listening for incoming traffic"
+  tags: None
+1100:
+  description: "The event logging service has shut down"
+  tags: None
+1101:
+  description: "Audit events have been dropped by the transport."
+  tags: None
+1102:
+  description: "The audit log was cleared"
+  tags: None
+1104:
+  description: "The security Log is now full"
+  tags: None
+1105:
+  description: "Event log automatic backup"
+  tags: None
+1108:
+  description: "The event logging service encountered an error"
+  tags: None
+4608:
+  description: "Windows is starting up"
+  tags:
+    - "Startup"
+4609:
+  description: "Windows is shutting down"
+  tags: 
+    - "Shutdown"
+4610:
+  description: "An authentication package has been loaded by the Local Security Authority"
+  tags: None
+4611:
+  description: "A trusted logon process has been registered with the Local Security Authority"
+  tags: None
+4612:
+  description: "Internal resources allocated for the queuing of audit messages have been exhausted, leading to the loss of some audits."
+  tags: None
+4614:
+  description: "A notification package has been loaded by the Security Account Manager."
+  tags: None
+4615:
+  description: "Invalid use of LPC port"
+  tags: None
+4616:
+  description: "The system time was changed."
+  tags: None
+4618:
+  description: "A monitored security event pattern has occurred"
+  tags: None
+4621:
+  description: "Administrator recovered system from CrashOnAuditFail"
+  tags: None
+4622:
+  description: "A security package has been loaded by the Local Security Authority."
+  tags: None
+4624:
+  description: "An account was successfully logged on"
+  tags: None
+4625:
+  description: "An account failed to log on"
+  tags: None
+4626:
+  description: "User/Device claims information"
+  tags: None
+4627:
+  description: "Group membership information."
+  tags: None
+4634:
+  description: "An account was logged off"
+  tags: None
+4646:
+  description: "IKE DoS-prevention mode started"
+  tags: None
+4647:
+  description: "User initiated logoff"
+  tags: None
+4648:
+  description: "A logon was attempted using explicit credentials"
+  tags: None
+4649:
+  description: "A replay attack was detected"
+  tags: None
+4650:
+  description: "An IPsec Main Mode security association was established"
+  tags: None
+4651:
+  description: "An IPsec Main Mode security association was established"
+  tags: None
+4652:
+  description: "An IPsec Main Mode negotiation failed"
+  tags: None
+4653:
+  description: "An IPsec Main Mode negotiation failed"
+  tags: None
+4654:
+  description: "An IPsec Quick Mode negotiation failed"
+  tags: None
+4655:
+  description: "An IPsec Main Mode security association ended"
+  tags: None
+4656:
+  description: "A handle to an object was requested"
+  tags: None
+4657:
+  description: "A registry value was modified"
+  tags: None
+4658:
+  description: "The handle to an object was closed"
+  tags: None
+4659:
+  description: "A handle to an object was requested with intent to delete"
+  tags: None
+4660:
+  description: "An object was deleted"
+  tags: None
+4661:
+  description: "A handle to an object was requested"
+  tags: None
+4662:
+  description: "An operation was performed on an object"
+  tags: None
+4663:
+  description: "An attempt was made to access an object"
+  tags: None
+4664:
+  description: "An attempt was made to create a hard link"
+  tags: None
+4665:
+  description: "An attempt was made to create an application client context."
+  tags: None
+4666:
+  description: "An application attempted an operation"
+  tags: None
+4667:
+  description: "An application client context was deleted"
+  tags: None
+4668:
+  description: "An application was initialized"
+  tags: None
+4670:
+  description: "Permissions on an object were changed"
+  tags:
+    - "Permission"
+    - "Change"
+4671:
+  description: "An application attempted to access a blocked ordinal through the TBS"
+  tags: None
+4672:
+  description: "Special privileges assigned to new logon"
+  tags:
+    - "Permission"
+4673:
+  description: "A privileged service was called"
+  tags: None
+4674:
+  description: "An operation was attempted on a privileged object"
+  tags: None
+4675:
+  description: "SIDs were filtered"
+  tags:
+    - "SID"
+4688:
+  description: "A new process has been created"
+  tags:
+    - "Process"
+    - "Start"
+4689:
+  description: "A process has exited"
+  tags:
+    - "Process"
+    - "Stoped"
+4690:
+  description: "An attempt was made to duplicate a handle to an object"
+  tags: None
+4691:
+  description: "Indirect access to an object was requested"
+  tags: None
+4692:
+  description: "Backup of data protection master key was attempted"
+  tags: None
+4693:
+  description: "Recovery of data protection master key was attempted"
+  tags: None
+4694:
+  description: "Protection of auditable protected data was attempted"
+  tags: None
+4695:
+  description: "Unprotection of auditable protected data was attempted"
+  tags: None
+4696:
+  description: "A primary token was assigned to process"
+  tags: None
+4697:
+  description: "A service was installed in the system"
+  tags:
+    - "Service"
+    - "Installed"
+4698:
+  description: "A scheduled task was created"
+  tags:
+    - "Schedule"
+    - "Task"
+    - "Create"
+4699:
+  description: "A scheduled task was deleted"
+  tags:
+    - "Schedule"
+    - "Task"
+    - "Delete"
+4700:
+  description: "A scheduled task was enabled"
+  tags:
+    - "Schedule"
+    - "Task"
+    - "Enable"
+4701:
+  description: "A scheduled task was disabled"
+  tags:
+    - "Schedule"
+    - "Task"
+    - "Disable"
+4702:
+  description: "A scheduled task was updated"
+  tags:
+    - "Schedule"
+    - "Task"
+    - "Change"
+4704:
+  description: "A user right was assigned"
+  tags:
+    - "Privilege"
+    - "Create"
+4705:
+  description: "A user right was removed"
+  tags:
+    - "Privilege"
+    - "Delete"
+4706:
+  description: "A new trust was created to a domain"
+  tags:
+    - "Privilege"
+    - "Create"
+4707:
+  description: "A trust to a domain was removed"
+  tags:
+    - "Privilege"
+    - "Delete"
+4709:
+  description: "IPsec Services was started"
+  tags:
+    - "IPsec"
+    - "Service"
+    - "Start"
+4710:
+  description: "IPsec Services was disabled"
+  tags:
+    - "IPsec"
+    - "Service"
+    - "Stop"
+4711:
+  description: "PAStore Engine (1%)"
+  tags:
+    - "IPsec"
+4712:
+  description: "IPsec Services encountered a potentially serious failure"
+  tags:
+    - "IPsec"
+    - "Service"
+    - "Failure"
+4713:
+  description: "Kerberos policy was changed"
+  tags:
+    - "Kerberos"
+    - "Policy"
+    - "Change"
+4714:
+  description: "Encrypted data recovery policy was changed"
+  tags:
+    - "Encryption"
+    - "Policy"
+    - "Change"
+4715:
+  description: "The audit policy (SACL) on an object was changed"
+  tags:
+    - "Audit"
+    - "Policy"
+    - "Change"
+4716:
+  description: "Trusted domain information was modified"
+  tags:
+    - "Domain"
+    - "Change"
+4717:
+  description: "System security access was granted to an account"
+  tags:
+    - "Account"
+    - "Access"
+    - "Create"
+4718:
+  description: "System security access was removed from an account"
+  tags:
+    - "Account"
+    - "Access"
+    - "Delete"
+4719:
+  description: "System audit policy was changed"
+  tags:
+    - "Policy"
+    - "Change"
+4720:
+  description: "A user account was created"
+  tags:
+    - "Create"
+    - "Account"
+4722:
+  description: "A user account was enabled"
+  tags:
+    - "Enable"
+    - "Account"
+4723:
+  description: "An attempt was made to change an account's password"
+  tags:
+    - "Account"
+    - "Password"
+    - "Change"
+4724:
+  description: "An attempt was made to reset an accounts password"
+  tags:
+    - "Account"
+    - "Password"
+    - "Reset"
+4725:
+  description: "A user account was disabled"
+  tags:
+    - "Disable"
+    - "Account"
+4726:
+  description: "A user account was deleted"
+  tags:
+    - "Delete"
+    - "Account"
+4727:
+  description: "A security-enabled global group was created"
+  tags:
+    - "Group"
+4728:
+  description: "A member was added to a security-enabled global group"
+  tags:
+    - "Group"
+4729:
+  description: "A member was removed from a security-enabled global group"
+  tags:
+    - "Group"
+4730:
+  description: "A security-enabled global group was deleted"
+  tags:
+    - "Group"
+4731:
+  description: "A security-enabled local group was created"
+  tags:
+    - "Group"
+4732:
+  description: "A member was added to a security-enabled local group"
+  tags:
+    - "Group"
+4733:
+  description: "A member was removed from a security-enabled local group"
+  tags:
+    - "Group"
+4734:
+  description: "A security-enabled local group was deleted"
+  tags:
+    - "Group"
+    - "Delete"
+4735:
+  description: "A security-enabled local group was changed"
+  tags:
+    - "Group"
+    - "Change"
+4737:
+  description: "A security-enabled global group was changed"
+  tags:
+    - "Group"
+    - "Change"
+4738:
+  description: "A user account was changed"
+  tags:
+    - "Account"
+    - "Change"
+4739:
+  description: "Domain Policy was changed"
+  tags:
+    - "Domain"
+    - "Policy"
+    - "Change"
+4740:
+  description: "A user account was locked out"
+  tags:
+    - "Account"
+    - "Locked"
+4741:
+  description: "A computer account was created"
+  tags:
+    - "Account"
+    - "Created"
+4742:
+  description: "A computer account was changed"
+  tags:
+    - "Account"
+    - "Change"
+4743:
+  description: "A computer account was deleted"
+  tags:
+    - "Account"
+    - "Delete"
+4744:
+  description: "A security-disabled local group was created"
+  tags:
+    - "Group"
+4745:
+  description: "A security-disabled local group was changed"
+  tags:
+    - "Group"
+4746:
+  description: "A member was added to a security-disabled local group"
+  tags:
+    - "Group"
+4747:
+  description: "A member was removed from a security-disabled local group"
+  tags:
+    - "Group"
+4748:
+  description: "A security-disabled local group was deleted"
+  tags:
+    - "Group"
+4749:
+  description: "A security-disabled global group was created"
+  tags:
+    - "Group"
+4750:
+  description: "A security-disabled global group was changed"
+  tags:
+    - "Group"
+4751:
+  description: "A member was added to a security-disabled global group"
+  tags:
+    - "Group"
+4752:
+  description: "A member was removed from a security-disabled global group"
+  tags:
+    - "Group"
+4753:
+  description: "A security-disabled global group was deleted"
+  tags:
+    - "Group"
+4754:
+  description: "A security-enabled universal group was created"
+  tags:
+    - "Group"
+4755:
+  description: "A security-enabled universal group was changed"
+  tags:
+    - "Group"
+4756:
+  description: "A member was added to a security-enabled universal group"
+  tags:
+    - "Group"
+4757:
+  description: "A member was removed from a security-enabled universal group"
+  tags:
+    - "Group"
+4758:
+  description: "A security-enabled universal group was deleted"
+  tags:
+    - "Group"
+    - "Delete"
+4759:
+  description: "A security-disabled universal group was created"
+  tags:
+    - "Group"
+    - "Create"
+4760:
+  description: "A security-disabled universal group was changed"
+  tags:
+    - "Group"
+    - "Change"
+4761:
+  description: "A member was added to a security-disabled universal group"
+  tags:
+    - "Group"
+4762:
+  description: "A member was removed from a security-disabled universal group"
+  tags:
+    - "Group"
+4763:
+  description: "A security-disabled universal group was deleted"
+  tags:
+    - "Group"
+4764:
+  description: "A groups type was changed"
+  tags:
+    - "Group"
+4765:
+  description: "SID History was added to an account"
+  tags:
+    - "SID"
+4766:
+  description: "An attempt to add SID History to an account failed"
+  tags:
+    - "SID"
+4767:
+  description: "A user account was unlocked"
+  tags:
+    - "Account"
+    - "Unlock"
+4768:
+  description: "A Kerberos authentication ticket (TGT) was requested"
+  tags:
+    - "Kerberos"
+    - "Tickit"
+4769:
+  description: "A Kerberos service ticket was requested"
+  tags:
+    - "Kerberos"
+    - "Tickit"
+4770:
+  description: "A Kerberos service ticket was renewed"
+  tags:
+    - "Kerberos"
+    - "Tickit"
+4771:
+  description: "Kerberos pre-authentication failed"
+  tags:
+    - "Kerberos"
+    - "Tickit"
+4772:
+  description: "A Kerberos authentication ticket request failed"
+  tags:
+    - "Kerberos"
+    - "Tickit"
+4773:
+  description: "A Kerberos service ticket request failed"
+  tags:
+    - "Kerberos"
+    - "Tickit"
+4774:
+  description: "An account was mapped for logon"
+  tags: None
+4775:
+  description: "An account could not be mapped for logon"
+  tags: None
+4776:
+  description: "The domain controller attempted to validate the credentials for an account"
+  tags: None
+4777:
+  description: "The domain controller failed to validate the credentials for an account"
+  tags: None
+4778:
+  description: "A session was reconnected to a Window Station"
+  tags: None
+4779:
+  description: "A session was disconnected from a Window Station"
+  tags: None
+4780:
+  description: "The ACL was set on accounts which are members of administrators groups"
+  tags:
+    - "Privlege"
+4781:
+  description: "The name of an account was changed"
+  tags:
+    - "Account"
+    - "Change"
+4782:
+  description: "The password hash an account was accessed"
+  tags: None
+4783:
+  description: "A basic application group was created"
+  tags:
+    - "Group"
+4784:
+  description: "A basic application group was changed"
+  tags:
+    - "Group"
+4785:
+  description: "A member was added to a basic application group"
+  tags:
+    - "Group"
+4786:
+  description: "A member was removed from a basic application group"
+  tags:
+    - "Group"
+4787:
+  description: "A non-member was added to a basic application group"
+  tags:
+    - "Group"
+4788:
+  description: "A non-member was removed from a basic application group.."
+  tags:
+    - "Group"
+4789:
+  description: "A basic application group was deleted"
+  tags:
+    - "Group"
+4790:
+  description: "An LDAP query group was created"
+  tags:
+    - "Group"
+4791:
+  description: "A basic application group was changed"
+  tags:
+    - "Group"
+4792:
+  description: "An LDAP query group was deleted"
+  tags:
+    - "Group"
+4793:
+  description: "The Password Policy Checking API was called"
+  tags:
+    - "Policy"
+4794:
+  description: "An attempt was made to set the Directory Services Restore Mode administrator password"
+  tags: None
+4797:
+  description: "An attempt was made to query the existence of a blank password for an account"
+  tags: None
+4798:
+  description: "A user's local group membership was enumerated."
+  tags: None
+4799:
+  description: "A security-enabled local group membership was enumerated"
+  tags: None
+4800:
+  description: "The workstation was locked"
+  tags:
+    - "Lock"
+4801:
+  description: "The workstation was unlocked"
+  tags:
+    - "Unlock"
+4802:
+  description: "The screen saver was invoked"
+  tags: None
+4803:
+  description: "The screen saver was dismissed"
+  tags: None
+4816:
+  description: "RPC detected an integrity violation while decrypting an incoming message"
+  tags: None
+4817:
+  description: "Auditing settings on object were changed."
+  tags: None
+4818:
+  description: "Proposed Central Access Policy does not grant the same access permissions as the current Central Access Policy"
+  tags:
+    - "Policy"
+4819:
+  description: "Central Access Policies on the machine have been changed"
+  tags:
+    - "Policy"
+4820:
+  description: "A Kerberos Ticket-granting-ticket (TGT) was denied because the device does not meet the access control restrictions"
+  tags:
+    - "Kerberos"
+4821:
+  description: "A Kerberos service ticket was denied because the user, device, or both does not meet the access control restrictions"
+  tags:
+    - "Kerberos"
+4822:
+  description: "NTLM authentication failed because the account was a member of the Protected User group"
+  tags: None
+4823:
+  description: "NTLM authentication failed because access control restrictions are required"
+  tags: None
+4824:
+  description: "Kerberos preauthentication by using DES or RC4 failed because the account was a member of the Protected User group"
+  tags:
+    - "Kerberos"
+4826:
+  description: "Boot Configuration Data loaded."
+  tags: None
+4864:
+  description: "A namespace collision was detected"
+  tags: None
+4865:
+  description: "A trusted forest information entry was added"
+  tags: None
+4866:
+  description: "A trusted forest information entry was removed"
+  tags: None
+4867:
+  description: "A trusted forest information entry was modified"
+  tags: None
+4868:
+  description: "The certificate manager denied a pending certificate request"
+  tags: None
+4869:
+  description: "Certificate Services received a resubmitted certificate request"
+  tags: None
+4870:
+  description: "Certificate Services revoked a certificate"
+  tags: None
+4871:
+  description: "Certificate Services received a request to publish the certificate revocation list (CRL)"
+  tags: None
+4872:
+  description: "Certificate Services published the certificate revocation list (CRL)"
+  tags: None
+4873:
+  description: "A certificate request extension changed"
+  tags: None
+4874:
+  description: "One or more certificate request attributes changed."
+  tags: None
+4875:
+  description: "Certificate Services received a request to shut down"
+  tags: None
+4876:
+  description: "Certificate Services backup started"
+  tags: None
+4877:
+  description: "Certificate Services backup completed"
+  tags: None
+4878:
+  description: "Certificate Services restore started"
+  tags: None
+4879:
+  description: "Certificate Services restore completed"
+  tags: None
+4880:
+  description: "Certificate Services started"
+  tags: None
+4881:
+  description: "Certificate Services stopped"
+  tags: None
+4882:
+  description: "The security permissions for Certificate Services changed"
+  tags: None
+4883:
+  description: "Certificate Services retrieved an archived key"
+  tags: None
+4884:
+  description: "Certificate Services imported a certificate into its database"
+  tags: None
+4885:
+  description: "The audit filter for Certificate Services changed"
+  tags: None
+4886:
+  description: "Certificate Services received a certificate request"
+  tags: None
+4887:
+  description: "Certificate Services approved a certificate request and issued a certificate"
+  tags: None
+4888:
+  description: "Certificate Services denied a certificate request"
+  tags: None
+4889:
+  description: "Certificate Services set the status of a certificate request to pending"
+  tags: None
+4890:
+  description: "The certificate manager settings for Certificate Services changed."
+  tags: None
+4891:
+  description: "A configuration entry changed in Certificate Services"
+  tags: None
+4892:
+  description: "A property of Certificate Services changed"
+  tags: None
+4893:
+  description: "Certificate Services archived a key"
+  tags: None
+4894:
+  description: "Certificate Services imported and archived a key"
+  tags: None
+4895:
+  description: "Certificate Services published the CA certificate to Active Directory Domain Services"
+  tags: None
+4896:
+  description: "One or more rows have been deleted from the certificate database"
+  tags: None
+4897:
+  description: "Role separation enabled"
+  tags: None
+4898:
+  description: "Certificate Services loaded a template"
+  tags: None
+4899:
+  description: "A Certificate Services template was updated"
+  tags: None
+4900:
+  description: "Certificate Services template security was updated"
+  tags: None
+4902:
+  description: "The Per-user audit policy table was created"
+  tags: None
+4904:
+  description: "An attempt was made to register a security event source"
+  tags: None
+4905:
+  description: "An attempt was made to unregister a security event source"
+  tags: None
+4906:
+  description: "The CrashOnAuditFail value has changed"
+  tags: None
+4907:
+  description: "Auditing settings on object were changed"
+  tags: None
+4908:
+  description: "Special Groups Logon table modified"
+  tags: None
+4909:
+  description: "The local policy settings for the TBS were changed"
+  tags: None
+4910:
+  description: "The group policy settings for the TBS were changed"
+  tags: None
+4911:
+  description: "Resource attributes of the object were changed"
+  tags: None
+4912:
+  description: "Per User Audit Policy was changed"
+  tags:
+    - "Policy"
+    - "Change"
+4913:
+  description: "Central Access Policy on the object was changed"
+  tags:
+    - "Policy"
+    - "Change"
+4928:
+  description: "An Active Directory replica source naming context was established"
+  tags:
+    - "Active Directory"
+4929:
+  description: "An Active Directory replica source naming context was removed"
+  tags:
+    - "Active Directory"
+4930:
+  description: "An Active Directory replica source naming context was modified"
+  tags:
+    - "Active Directory"
+4931:
+  description: "An Active Directory replica destination naming context was modified"
+  tags:
+    - "Active Directory"
+4932:
+  description: "Synchronization of a replica of an Active Directory naming context has begun"
+  tags:
+    - "Active Directory"
+4933:
+  description: "Synchronization of a replica of an Active Directory naming context has ended"
+  tags:
+    - "Active Directory"
+4934:
+  description: "Attributes of an Active Directory object were replicated"
+  tags:
+    - "Active Directory"
+4935:
+  description: "Replication failure begins"
+  tags: None
+4936:
+  description: "Replication failure ends"
+  tags: None
+4937:
+  description: "A lingering object was removed from a replica"
+  tags: None
+4944:
+  description: "The following policy was active when the Windows Firewall started"
+  tags:
+    - "Firewall"
+4945:
+  description: "A rule was listed when the Windows Firewall started"
+  tags:
+    - "Firewall"
+4946:
+  description: "A change has been made to Windows Firewall exception list. A rule was added"
+  tags:
+    - "Firewall"
+4947:
+  description: "A change has been made to Windows Firewall exception list. A rule was modified"
+  tags:
+    - "Firewall"
+4948:
+  description: "A change has been made to Windows Firewall exception list. A rule was deleted"
+  tags:
+    - "Firewall"
+4949:
+  description: "Windows Firewall settings were restored to the default values"
+  tags:
+    - "Firewall"
+4950:
+  description: "A Windows Firewall setting has changed"
+  tags:
+    - "Firewall"
+4951:
+  description: "A rule has been ignored because its major version number was not recognized by Windows Firewall"
+  tags:
+    - "Firewall"
+4952:
+  description: "Parts of a rule have been ignored because its minor version number was not recognized by Windows Firewall"
+  tags:
+    - "Firewall"
+4953:
+  description: "A rule has been ignored by Windows Firewall because it could not parse the rule"
+  tags:
+    - "Firewall"
+4954:
+  description: "Windows Firewall Group Policy settings has changed. The new settings have been applied"
+  tags:
+    - "Firewall"
+4956:
+  description: "Windows Firewall has changed the active profile"
+  tags:
+    - "Firewall"
+4957:
+  description: "Windows Firewall did not apply the following rule"
+  tags:
+    - "Firewall"
+4958:
+  description: "Windows Firewall did not apply the following rule because the rule referred to items not configured on this computer"
+  tags:
+    - "Firewall"
+4960:
+  description: "IPsec dropped an inbound packet that failed an integrity check"
+  tags:
+    - "IPsec"
+4961:
+  description: "IPsec dropped an inbound packet that failed a replay check"
+  tags:
+    - "IPsec"
+4962:
+  description: "IPsec dropped an inbound packet that failed a replay check"
+  tags:
+    - "IPsec"
+4963:
+  description: "IPsec dropped an inbound clear text packet that should have been secured"
+  tags:
+    - "IPsec"
+4964:
+  description: "Special groups have been assigned to a new logon"
+  tags:
+    - "Group"
+4965:
+  description: "IPsec received a packet from a remote computer with an incorrect Security Parameter Index (SPI)."
+  tags:
+    - "IPsec"
+4976:
+  description: "During Main Mode negotiation, IPsec received an invalid negotiation packet."
+  tags:
+    - "IPsec"
+4977:
+  description: "During Quick Mode negotiation, IPsec received an invalid negotiation packet."
+  tags:
+    - "IPsec"
+4978:
+  description: "During Extended Mode negotiation, IPsec received an invalid negotiation packet."
+  tags:
+    - "IPsec"
+4979:
+  description: "IPsec Main Mode and Extended Mode security associations were established."
+  tags:
+    - "IPsec"
+4980:
+  description: "IPsec Main Mode and Extended Mode security associations were established"
+  tags:
+    - "IPsec"
+4981:
+  description: "IPsec Main Mode and Extended Mode security associations were established"
+  tags:
+    - "IPsec"
+4982:
+  description: "IPsec Main Mode and Extended Mode security associations were established"
+  tags:
+    - "IPsec"
+4983:
+  description: "An IPsec Extended Mode negotiation failed"
+  tags:
+    - "IPsec"
+4984:
+  description: "An IPsec Extended Mode negotiation failed"
+  tags:
+    - "IPsec"
+4985:
+  description: "The state of a transaction has changed"
+  tags: None
+5024:
+  description: "The Windows Firewall Service has started successfully"
+  tags:
+    - "Service"
+    - "Firewall"
+    - "Start"
+5025:
+  description: "The Windows Firewall Service has been stopped"
+  tags:
+    - "Service"
+    - "Firewall"
+    - "Stop"
+5027:
+  description: "The Windows Firewall Service was unable to retrieve the security policy from the local storage"
+  tags:
+    - "Firewall"
+5028:
+  description: "The Windows Firewall Service was unable to parse the new security policy."
+  tags:
+    - "Firewall"
+5029:
+  description: "The Windows Firewall Service failed to initialize the driver"
+  tags:
+    - "Firewall"
+5030:
+  description: "The Windows Firewall Service failed to start"
+  tags:
+    - "Firewall"
+5031:
+  description: "The Windows Firewall Service blocked an application from accepting incoming connections on the network."
+  tags:
+    - "Firewall"
+5032:
+  description: "Windows Firewall was unable to notify the user that it blocked an application from accepting incoming connections on the network"
+  tags:
+    - "Firewall"
+5033:
+  description: "The Windows Firewall Driver has started successfully"
+  tags:
+    - "Firewall"
+5034:
+  description: "The Windows Firewall Driver has been stopped"
+  tags:
+    - "Firewall"
+5035:
+  description: "The Windows Firewall Driver failed to start"
+  tags:
+    - "Firewall"
+5037:
+  description: "The Windows Firewall Driver detected critical runtime error. Terminating"
+  tags:
+    - "Firewall"
+5038:
+  description: "Code integrity determined that the image hash of a file is not valid"
+  tags: None
+5039:
+  description: "A registry key was virtualized."
+  tags: None
+5040:
+  description: "A change has been made to IPsec settings. An Authentication Set was added."
+  tags: None
+5041:
+  description: "A change has been made to IPsec settings. An Authentication Set was modified"
+  tags: None
+5042:
+  description: "A change has been made to IPsec settings. An Authentication Set was deleted"
+  tags: None
+5043:
+  description: "A change has been made to IPsec settings. A Connection Security Rule was added"
+  tags: None
+5044:
+  description: "A change has been made to IPsec settings. A Connection Security Rule was modified"
+  tags: None
+5045:
+  description: "A change has been made to IPsec settings. A Connection Security Rule was deleted"
+  tags: None
+5046:
+  description: "A change has been made to IPsec settings. A Crypto Set was added"
+  tags: None
+5047:
+  description: "A change has been made to IPsec settings. A Crypto Set was modified"
+  tags: None
+5048:
+  description: "A change has been made to IPsec settings. A Crypto Set was deleted"
+  tags: None
+5049:
+  description: "An IPsec Security Association was deleted"
+  tags: None
+5050:
+  description: "An attempt to programmatically disable the Windows Firewall using a call to INetFwProfile.FirewallEnabled(FALSE"
+  tags: None
+5051:
+  description: "A file was virtualized"
+  tags: None
+5056:
+  description: "A cryptographic self test was performed"
+  tags: None
+5057:
+  description: "A cryptographic primitive operation failed"
+  tags: None
+5058:
+  description: "Key file operation"
+  tags: None
+5059:
+  description: "Key migration operation"
+  tags: None
+5060:
+  description: "Verification operation failed"
+  tags: None
+5061:
+  description: "Cryptographic operation"
+  tags: None
+5062:
+  description: "A kernel-mode cryptographic self test was performed"
+  tags: None
+5063:
+  description: "A cryptographic provider operation was attempted"
+  tags: None
+5064:
+  description: "A cryptographic context operation was attempted"
+  tags: None
+5065:
+  description: "A cryptographic context modification was attempted"
+  tags: None
+5066:
+  description: "A cryptographic function operation was attempted"
+  tags: None
+5067:
+  description: "A cryptographic function modification was attempted"
+  tags: None
+5068:
+  description: "A cryptographic function provider operation was attempted"
+  tags: None
+5069:
+  description: "A cryptographic function property operation was attempted"
+  tags: None
+5070:
+  description: "A cryptographic function property operation was attempted"
+  tags: None
+5071:
+  description: "Key access denied by Microsoft key distribution service"
+  tags: None
+5120:
+  description: "OCSP Responder Service Started"
+  tags: None
+5121:
+  description: "OCSP Responder Service Stopped"
+  tags: None
+5122:
+  description: "A Configuration entry changed in the OCSP Responder Service"
+  tags: None
+5123:
+  description: "A configuration entry changed in the OCSP Responder Service"
+  tags: None
+5124:
+  description: "A security setting was updated on OCSP Responder Service"
+  tags: None
+5125:
+  description: "A request was submitted to OCSP Responder Service"
+  tags: None
+5126:
+  description: "Signing Certificate was automatically updated by the OCSP Responder Service"
+  tags: None
+5127:
+  description: "The OCSP Revocation Provider successfully updated the revocation information"
+  tags: None
+5136:
+  description: "A directory service object was modified"
+  tags: None
+5137:
+  description: "A directory service object was created"
+  tags: None
+5138:
+  description: "A directory service object was undeleted"
+  tags: None
+5139:
+  description: "A directory service object was moved"
+  tags: None
+5140:
+  description: "A network share object was accessed"
+  tags: None
+5141:
+  description: "A directory service object was deleted"
+  tags: None
+5142:
+  description: "A network share object was added."
+  tags: None
+5143:
+  description: "A network share object was modified"
+  tags: None
+5144:
+  description: "A network share object was deleted."
+  tags: None
+5145:
+  description: "A network share object was checked to see whether client can be granted desired access"
+  tags: None
+5146:
+  description: "The Windows Filtering Platform has blocked a packet"
+  tags: None
+5147:
+  description: "A more restrictive Windows Filtering Platform filter has blocked a packet"
+  tags: None
+5148:
+  description: "The Windows Filtering Platform has detected a DoS attack and entered a defensive mode; packets associated with this attack will be discarded."
+  tags: None
+5149:
+  description: "The DoS attack has subsided and normal processing is being resumed."
+  tags: None
+5150:
+  description: "The Windows Filtering Platform has blocked a packet."
+  tags: None
+5151:
+  description: "A more restrictive Windows Filtering Platform filter has blocked a packet."
+  tags: None
+5152:
+  description: "The Windows Filtering Platform blocked a packet"
+  tags: None
+5153:
+  description: "A more restrictive Windows Filtering Platform filter has blocked a packet"
+  tags: None
+5154:
+  description: "The Windows Filtering Platform has permitted an application or service to listen on a port for incoming connections"
+  tags: None
+5155:
+  description: "The Windows Filtering Platform has blocked an application or service from listening on a port for incoming connections"
+  tags: None
+5156:
+  description: "The Windows Filtering Platform has allowed a connection"
+  tags: None
+5157:
+  description: "The Windows Filtering Platform has blocked a connection"
+  tags: None
+5158:
+  description: "The Windows Filtering Platform has permitted a bind to a local port"
+  tags: None
+5159:
+  description: "The Windows Filtering Platform has blocked a bind to a local port"
+  tags: None
+5168:
+  description: "Spn check for SMB/SMB2 fails."
+  tags: None
+5376:
+  description: "Credential Manager credentials were backed up"
+  tags: None
+5377:
+  description: "Credential Manager credentials were restored from a backup"
+  tags: None
+5378:
+  description: "The requested credentials delegation was disallowed by policy"
+  tags: None
+5440:
+  description: "The following callout was present when the Windows Filtering Platform Base Filtering Engine started"
+  tags: None
+5441:
+  description: "The following filter was present when the Windows Filtering Platform Base Filtering Engine started"
+  tags: None
+5442:
+  description: "The following provider was present when the Windows Filtering Platform Base Filtering Engine started"
+  tags: None
+5443:
+  description: "The following provider context was present when the Windows Filtering Platform Base Filtering Engine started"
+  tags: None
+5444:
+  description: "The following sub-layer was present when the Windows Filtering Platform Base Filtering Engine started"
+  tags: None
+5446:
+  description: "A Windows Filtering Platform callout has been changed"
+  tags: None
+5447:
+  description: "A Windows Filtering Platform filter has been changed"
+  tags: None
+5448:
+  description: "A Windows Filtering Platform provider has been changed"
+  tags: None
+5449:
+  description: "A Windows Filtering Platform provider context has been changed"
+  tags: None
+5450:
+  description: "A Windows Filtering Platform sub-layer has been changed"
+  tags: None
+5451:
+  description: "An IPsec Quick Mode security association was established"
+  tags: None
+5452:
+  description: "An IPsec Quick Mode security association ended"
+  tags: None
+5453:
+  description: "An IPsec negotiation with a remote computer failed because the IKE and AuthIP IPsec Keying Modules (IKEEXT) service is not started"
+  tags: None
+5456:
+  description: "PAStore Engine applied Active Directory storage IPsec policy on the computer"
+  tags:
+    - "PAStore"
+    - "IPsec"
+    - "Active Directory"
+    - "Policy"
+5457:
+  description: "PAStore Engine failed to apply Active Directory storage IPsec policy on the computer"
+  tags:
+    - "PAStore"
+    - "IPsec"
+    - "Active Directory"
+    - "Policy"
+5458:
+  description: "PAStore Engine applied locally cached copy of Active Directory storage IPsec policy on the computer"
+  tags:
+    - "PAStore"
+    - "IPsec"
+    - "Active Directory"
+    - "Policy"
+5459:
+  description: "PAStore Engine failed to apply locally cached copy of Active Directory storage IPsec policy on the computer"
+  tags:
+    - "PAStore"
+    - "IPsec"
+    - "Active Directory"
+    - "Policy"
+    - "Failure"
+5460:
+  description: "PAStore Engine applied local registry storage IPsec policy on the computer"
+  tags:
+    - "PAStore"
+    - "IPsec"
+    - "Policy"
+    - "Success"
+5461:
+  description: "PAStore Engine failed to apply local registry storage IPsec policy on the computer"
+  tags:
+    - "PAStore"
+    - "IPsec"
+    - "Policy"
+    - "Failure"
+5462:
+  description: "PAStore Engine failed to apply some rules of the active IPsec policy on the computer"
+  tags:
+    - "PAStore"
+    - "IPsec"
+    - "Policy"
+    - "Failure"
+5463:
+  description: "PAStore Engine polled for changes to the active IPsec policy and detected no changes"
+  tags:
+    - "PAStore"
+    - "IPsec"
+    - "Policy"
+5464:
+  description: "PAStore Engine polled for changes to the active IPsec policy, detected changes, and applied them to IPsec Services"
+  tags:
+    - "PAStore"
+    - "IPsec"
+    - "Policy"
+5465:
+  description: "PAStore Engine received a control for forced reloading of IPsec policy and processed the control successfully"
+  tags:
+    - "PAStore"
+    - "IPsec"
+    - "Policy"
+    - "Success"
+5466:
+  description: "PAStore Engine polled for changes to the Active Directory IPsec policy, determined that Active Directory cannot be reached, and will use the cached copy of the Active Directory IPsec policy instead"
+  tags: None
+5467:
+  description: "PAStore Engine polled for changes to the Active Directory IPsec policy, determined that Active Directory can be reached, and found no changes to the policy"
+  tags: None
+5468:
+  description: "PAStore Engine polled for changes to the Active Directory IPsec policy, determined that Active Directory can be reached, found changes to the policy, and applied those changes"
+  tags: None
+5471:
+  description: "PAStore Engine loaded local storage IPsec policy on the computer"
+  tags: None
+5472:
+  description: "PAStore Engine failed to load local storage IPsec policy on the computer"
+  tags: None
+5473:
+  description: "PAStore Engine loaded directory storage IPsec policy on the computer"
+  tags: None
+5474:
+  description: "PAStore Engine failed to load directory storage IPsec policy on the computer"
+  tags: None
+5477:
+  description: "PAStore Engine failed to add quick mode filter"
+  tags: None
+5478:
+  description: "IPsec Services has started successfully"
+  tags:
+    - "IPsec"
+    - "Service"
+    - "Start"
+5479:
+  description: "IPsec Services has been shut down successfully"
+  tags:
+    - "IPsec"
+    - "Service"
+    - "Stop"
+5480:
+  description: "IPsec Services failed to get the complete list of network interfaces on the computer"
+  tags:
+    - "IPsec"
+    - "Service"
+    - "Failure"
+5483:
+  description: "IPsec Services failed to initialize RPC server. IPsec Services could not be started"
+  tags:
+    - "IPsec"
+    - "Service"
+    - "Failure"
+5484:
+  description: "IPsec Services has experienced a critical failure and has been shut down"
+  tags:
+    - "IPsec"
+    - "Service"
+    - "Failure"
+5485:
+  description: "IPsec Services failed to process some IPsec filters on a plug-and-play event for network interfaces"
+  tags:
+    - "IPsec"
+5632:
+  description: "A request was made to authenticate to a wireless network"
+  tags: None
+5633:
+  description: "A request was made to authenticate to a wired network"
+  tags:
+    - "Network"
+5712:
+  description: "A Remote Procedure Call (RPC) was attempted"
+  tags:
+    - "Remote"
+    - "Network"
+5888:
+  description: "An object in the COM+ Catalog was modified"
+  tags: None
+5889:
+  description: "An object was deleted from the COM+ Catalog"
+  tags: None
+5890:
+  description: "An object was added to the COM+ Catalog"
+  tags: None
+6144:
+  description: "Security policy in the group policy objects has been applied successfully"
+  tags: None
+6145:
+  description: "One or more errors occured while processing security policy in the group policy objects"
+  tags: None
+6272:
+  description: "Network Policy Server granted access to a user"
+  tags: None
+6273:
+  description: "Network Policy Server denied access to a user"
+  tags: None
+6274:
+  description: "Network Policy Server discarded the request for a user"
+  tags: None
+6275:
+  description: "Network Policy Server discarded the accounting request for a user"
+  tags: None
+6276:
+  description: "Network Policy Server quarantined a user"
+  tags: None
+6277:
+  description: "Network Policy Server granted access to a user but put it on probation because the host did not meet the defined health policy"
+  tags: None
+6278:
+  description: "Network Policy Server granted full access to a user because the host met the defined health policy"
+  tags: None
+6279:
+  description: "Network Policy Server locked the user account due to repeated failed authentication attempts"
+  tags: None
+6280:
+  description: "Network Policy Server unlocked the user account"
+  tags: None
+6281:
+  description: "Code Integrity determined that the page hashes of an image file are not valid..."
+  tags: None
+6400:
+  description: "BranchCache: Received an incorrectly formatted response while discovering availability of content."
+  tags: None
+6401:
+  description: "BranchCache: Received invalid data from a peer. Data discarded."
+  tags: None
+6402:
+  description: "BranchCache: The message to the hosted cache offering it data is incorrectly formatted."
+  tags: None
+6403:
+  description: "BranchCache: The hosted cache sent an incorrectly formatted response to the client's message to offer it data."
+  tags: None
+6404:
+  description: "BranchCache: Hosted cache could not be authenticated using the provisioned SSL certificate."
+  tags: None
+6405:
+  description: "BranchCache: %2 instance(s) of event id %1 occurred."
+  tags: None
+6406:
+  description: "%1 registered to Windows Firewall to control filtering for the following:"
+  tags: None
+6407:
+  description: "1%"
+  tags: None
+6408:
+  description: "Registered product %1 failed and Windows Firewall is now controlling the filtering for %2."
+  tags: None
+6409:
+  description: "BranchCache: A service connection point object could not be parsed"
+  tags: None
+6416:
+  description: "A new external device was recognized by the system."
+  tags:
+    - "Device"

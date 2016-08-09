@@ -9,6 +9,7 @@ import re
 import hashlib
 import datetime
 import base64
+import yaml
 
 import pyevtx
 import pyevt
@@ -20,14 +21,18 @@ import elastichandler
 import Config
 
 WINEVENT_LOGGER = logging.getLogger('WinEvent')
+WINEVENT_MAPPING_FILE = 'etc/evtx.mapping.json'
+DESCRIPTION_FOLDER = 'etc/descriptions'
 
-WINEVENT_MAPPING_FILE = 'etc\\evtx.mapping.json'
+EVENT_ID_DESCRIPTIONS = {}
 
 WINEVENT_COLUMN_ORDER = [
     'we_hash_id',   #Hash of xml event string
     'we_index',
     'we_source',    #Source filename
     'we_jrec',      #Json Record
+    'we_tags',
+    'we_description',
     'eventfile_type',
     'computer_name',
     'event_category',
@@ -50,6 +55,8 @@ WINEVENT_FIELD_MAPPING = {
     'we_index':'BIGINT UNSIGNED',
     'we_source':'TEXT',
     'we_jrec':'JSON',
+    'we_tags':'TEXT',
+    'we_description':'TEXT',
     'eventfile_type':'CHAR(4)',
     'computer_name':'TEXT',
     'event_category':'BIGINT UNSIGNED',
@@ -66,6 +73,29 @@ WINEVENT_FIELD_MAPPING = {
     'xml_string':'TEXT',
     'data':'BLOB',
 }
+
+def DescriptionLoader(EVENT_ID_DESCRIPTIONS):
+    print(u'Loading YAML Descriptors...')
+    if not os.path.isdir(DESCRIPTION_FOLDER):
+        raise Exception('Description folder is not a directory: {}'.format(DESCRIPTION_FOLDER))
+    
+    # Open Descriptions Folder #
+    for filename in os.listdir(DESCRIPTION_FOLDER):
+        fullname = os.path.join(
+            DESCRIPTION_FOLDER,
+            filename
+        )
+        
+        #That ends with .yml#
+        if filename.endswith('.yml'):
+            channel,file_extension = os.path.splitext(filename)
+            with open(fullname,'rb') as fh:
+                descriptions = yaml.load(fh)
+                EVENT_ID_DESCRIPTIONS[channel] = descriptions
+                fh.close()
+    print(u'YAML Descriptors Loaded')
+
+DescriptionLoader(EVENT_ID_DESCRIPTIONS)
 
 def Main():
     DEBUG_FILE = sys.argv[1]
@@ -659,12 +689,27 @@ def HandleRecords(filename,options,eventfile_type,record_list,recovered,dbHandle
         md5.update(str(rdic))
         hash_id = md5.hexdigest()
         
+        we_description = None
+        we_tags = None
+        
+        if drec is not None:
+            if drec['System']['EventID']['#text'] is not None:
+                if drec['System']['Channel']['#text'] is not None:
+                    try:
+                        we_description = EVENT_ID_DESCRIPTIONS[unicode(drec['System']['Channel']['#text'])][int(drec['System']['EventID']['#text'])]['description']
+                        we_tags = EVENT_ID_DESCRIPTIONS[unicode(drec['System']['Channel']['#text'])][int(drec['System']['EventID']['#text'])]['tags']
+                        pass
+                    except:
+                        pass
+        
         sql_insert = {
             'we_hash_id':hash_id,
             'we_source':filename,
             'we_jrec':jrec,
             'we_recovered':recovered,
-            'we_index':i
+            'we_index':i,
+            'we_description':we_description,
+            'we_tags':str(we_tags)
         }
         
         sql_insert.update(rdic)
@@ -696,7 +741,9 @@ def HandleRecords(filename,options,eventfile_type,record_list,recovered,dbHandle
                 'index_timestamp': timestamp,
                 'recovered':recovered,
                 'source_filename':filename,
-                'index':i
+                'index':i,
+                'tags':we_tags,
+                'description':we_description
             })
             
             action = {
@@ -713,6 +760,12 @@ def HandleRecords(filename,options,eventfile_type,record_list,recovered,dbHandle
         sql_records,
         WINEVENT_COLUMN_ORDER
     )
+    
+def GetTags(event_id):
+    pass
+
+def GetDescription(event_id):
+    pass
     
 def GetIndexName(index_name):
     index_name = index_name.lower()

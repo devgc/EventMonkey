@@ -510,6 +510,12 @@
 				},
 				"source_name": {
 					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"tags": {
+					"type": "string"
 				}
 			}
 		}
