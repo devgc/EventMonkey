@@ -66,6 +66,9 @@ elastic_config:
 ```
 
 ## Do Things Like:
+Easier viewing and filtering using customizable tags and descriptions
+![Security Descriptions and Tagging](https://github.com/devgc/EventMonkey/blob/master/examples/DescriptionsAndTags.png)
+
 Search records recovered by EVTXtract
 ![Ingest EVTXtract records](https://github.com/devgc/EventMonkey/blob/master/examples/Ingest_EVTXtract_records.png)
 
