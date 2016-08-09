@@ -104,6 +104,19 @@ def Main():
     
     print drec
     
+class EvtXtractFile(object):
+    def __init__(self):
+        self.fullname = ''
+        self.filehandle = None
+    
+    def open(self,fullname):
+        self.fullname = fullname
+        self.filehandle = open(self.fullname,'rb')
+        self.file = json.load(self.filehandle)
+        self.records = self.file["valid_records"]
+        
+        pass
+    
 class WindowsEventManager():
     '''Handle process management of event processing'''
     def __init__(self,options):
@@ -155,8 +168,12 @@ class WindowsEventManager():
                 self.options.evidencename
             )
             
+            es_options = elastichandler.GetEsOptions(
+                self.options
+            )
+            
             esConfig = elastichandler.EsConfig(
-                self.options.eshost
+                es_options
             )
             
             esHandler = esConfig.GetEsHandler()
@@ -193,12 +210,17 @@ class WindowsEventManager():
         
         for dirName, subdirList, fileList in os.walk(self.options.events_path):
             for filename in fileList:
-                if filename.lower().endswith('.evt') or filename.lower().endswith('.evtx'):
-                    fullname = os.path.join(
-                        dirName,
-                        filename
-                    )
+                fullname = os.path.join(
+                    dirName,
+                    filename
+                )
+                if (filename.lower().endswith('.evt') or filename.lower().endswith('.evtx')):
                     self.filelist.append(fullname)
+                elif filename.lower().endswith('.json'):
+                    # Check for EvtXtract outputfiles #
+                    if IsSupportedEvtXtractFile(fullname):
+                        self.filelist.append(fullname)
+                        
         self.filelist.sort()
         
         progressBar = ProgressManager.ProgressBarClass(
@@ -215,13 +237,17 @@ class WindowsEventManager():
                 self.total_records += wefile.get_number_of_records()
                 self.total_records += wefile.get_number_of_recovered_records()
                 wefile.close()
-                
             elif filename.lower().endswith('evt'):
                 wefile = pyevt.file()
                 wefile.open(filename)
                 self.total_records += wefile.get_number_of_records()
                 self.total_records += wefile.get_number_of_recovered_records()
                 wefile.close()
+            elif filename.lower().endswith('json'):
+                with open(filename) as wefile:
+                    jstruct = json.load(wefile)
+                    self.total_records += len(jstruct['valid_records'])
+                    wefile.close()
             
             progressBar.Increment(1)
             _fcnt += 1
@@ -326,9 +352,14 @@ class WindowsEventHandler():
         elif self.ext.lower().endswith('evt'):
             self.eventfile_type = 'evt'
             self.file = pyevt.file()
+        elif self.ext.lower().endswith('json'):
+            self.eventfile_type = 'evtxtract'
+            self.file = EvtXtractFile()
         else:
-            raise Exception('{} Is not a supported extention. (.evt || .evtx) [{}]'.format(
-                self.ext,self.filename))
+            raise Exception('{} Is not a supported extention. (.evt || .evtx || .json [EVTXtract json file]) [{}]'.format(
+                self.ext,
+                self.filename
+            ))
         
         self.file.open(self.filename)
         
@@ -341,7 +372,7 @@ class WindowsEventHandler():
             pid,self.filename
         ))
         
-        # Open pyevtx file handle
+        # Open object file handle #
         self._OpenFile()
         
         esHandler = None
@@ -358,43 +389,63 @@ class WindowsEventHandler():
         
         # Create Elastic Handler
         if options.eshost is not None:
+            es_options = elastichandler.GetEsOptions(
+                options
+            )
             esConfig = elastichandler.EsConfig(
-                options.eshost
+                es_options
             )
             esHandler = esConfig.GetEsHandler()
         
-        if len(self.file.records) == 0:
-            WINEVENT_LOGGER.info("[PID: {}] {} has no records.".format(
-                pid,self.filename
-            ))
-        else:
-            HandleRecords(
-                self.filename,
-                options,
-                self.eventfile_type,
-                self.file.records,
-                False, #recovered flag
-                dbHandler,
-                elastic_actions,
-                self.progressBar
-            )
-        
-        if self.file.number_of_recovered_records == 0:
-            WINEVENT_LOGGER.debug("[PID: {}] {} has no recovered records.".format(
-                pid,
-                self.filename
-            ))
-        else:
-            HandleRecords(
-                self.filename,
-                options,
-                self.eventfile_type,
-                self.file.recovered_records,
-                True, #recovered flag
-                dbHandler,
-                elastic_actions,
-                self.progressBar
-            )
+        if self.eventfile_type == 'evtx' or self.eventfile_type == 'evt':
+            if len(self.file.records) == 0:
+                WINEVENT_LOGGER.info("[PID: {}] {} has no records.".format(
+                    pid,self.filename
+                ))
+            else:
+                HandleRecords(
+                    self.filename,
+                    options,
+                    self.eventfile_type,
+                    self.file.records,
+                    False, #recovered flag
+                    dbHandler,
+                    elastic_actions,
+                    self.progressBar
+                )
+            
+            if self.file.number_of_recovered_records == 0:
+                WINEVENT_LOGGER.debug("[PID: {}] {} has no recovered records.".format(
+                    pid,
+                    self.filename
+                ))
+            else:
+                HandleRecords(
+                    self.filename,
+                    options,
+                    self.eventfile_type,
+                    self.file.recovered_records,
+                    True, #recovered flag
+                    dbHandler,
+                    elastic_actions,
+                    self.progressBar
+                )
+        elif self.eventfile_type == 'evtxtract':
+            if len(self.file.records) == 0:
+                WINEVENT_LOGGER.info("[PID: {}] {} has no records.".format(
+                    pid,self.filename
+                ))
+            else:
+                HandleRecords(
+                    self.filename,
+                    options,
+                    self.eventfile_type,
+                    self.file.records,
+                    True, #recovered flag
+                    dbHandler,
+                    elastic_actions,
+                    self.progressBar
+                )
         
         #Index Elastic Records#
         if options.eshost is not None:
@@ -405,6 +456,28 @@ class WindowsEventHandler():
         WINEVENT_LOGGER.info("[PID: {}][finished] Processing: {}".format(
             pid,self.filename
         ))
+        
+def IsSupportedEvtXtractFile(fullname):
+    result = False
+    
+    with open(fullname) as fh:
+        jcontents = json.load(fh)
+        if ("generator" in jcontents) and ("version" in jcontents) and ("valid_records" in jcontents):
+            # possible EvtXtract output file #
+            if jcontents['generator'] == "recover-evtx" and jcontents['version'] == 1:
+                # EvtXtract version is supported #
+                result = True
+            else:
+                print(u"{} EvtXtract format not supported".format(
+                    fullname
+                ))
+                WINEVENT_LOGGER.warning(u"{} EvtXtract format not supported. generator: {}; version: {}".format(
+                    fullname,
+                    jcontents['generator'],
+                    jcontents['version']
+                ))
+    
+    return result
         
 def HandleRecords(filename,options,eventfile_type,record_list,recovered,dbHandler,elastic_actions,progressBar):
     pid = os.getpid()
@@ -435,7 +508,7 @@ def HandleRecords(filename,options,eventfile_type,record_list,recovered,dbHandle
         xml_string = None
         jrec = None
         drec = None
-        if filename.lower().endswith('.evtx'):
+        if eventfile_type == 'evtx':
             try:
                 xml_string = record.xml_string
                 #Strip null values just incase
@@ -463,6 +536,16 @@ def HandleRecords(filename,options,eventfile_type,record_list,recovered,dbHandle
                     taskid = drec['System']['Task']
                 except:
                     WINEVENT_LOGGER.debug('[PID: {}][{}] No Task ID for record at index {} (Recovered: {})'.format(pid,filename,i,str(recovered)))
+        elif eventfile_type == 'evtxtract':
+            # xml stirng is excaped, we need to decode it #
+            xml_string = record['xml']
+            list_names = [
+                'Event.EventData.Data',
+                'Event.EventData.Binary',
+            ]
+            # xml stirng is excaped, we need to decode it #
+            drec = XmlHandler.GetDictionary(record['xml'].decode('string_escape'),force_list=list_names)['Event']
+            jrec = json.dumps(drec)
         #########################################################################################################
         
         rdic = {}
@@ -534,40 +617,42 @@ def HandleRecords(filename,options,eventfile_type,record_list,recovered,dbHandle
             rdic['source_name']=getattr(record,'source_name',None)
             rdic['user_security_identifier']=getattr(record,'user_security_identifier',None)
             rdic['written_time']=getattr(record,'written_time',None)
-            
-        rdic['strings']=[]
-        rdic['xml_string']=xml_string
+                
+        rdic['strings']=''
+        rdic['xml_string']=xml_string.encode('utf-8','replace')
         
         c = 0
         
-        try:
-            for rstring in record.strings:
-                try:
-                    rdic['strings'].append(rstring)
-                except Exception as error:
-                    WINEVENT_LOGGER.info("[PID: {}][{}] record index {}, id {}\tINFO: {}-{}\tRecovered: {}\tNot able to get string at index {}.".format(
-                        pid,
-                        filename,
-                        i,
-                        record.identifier,
-                        str(type(error)),
-                        str(error),
-                        str(recovered),
-                        c
-                    ))
-                c+=1
-            rdic['strings'] = unicode(rdic['strings'])
-        except Exception as error:
-            WINEVENT_LOGGER.info("[PID: {}][{}] record index {}, id {}\tINFO: {}-{}\tRecovered: {}\tNot able to iterate strings.".format(
-                pid,
-                filename,
-                i,
-                record.identifier,
-                str(type(error)),
-                str(error),
-                str(recovered)
-            ))
-            rdic['strings'] = None
+        if eventfile_type == 'evtx' or eventfile_type == 'evt':
+            rdic['strings']=[]
+            try:
+                for rstring in record.strings:
+                    try:
+                        rdic['strings'].append(rstring)
+                    except Exception as error:
+                        WINEVENT_LOGGER.info("[PID: {}][{}] record index {}, id {}\tINFO: {}-{}\tRecovered: {}\tNot able to get string at index {}.".format(
+                            pid,
+                            filename,
+                            i,
+                            record.identifier,
+                            str(type(error)),
+                            str(error),
+                            str(recovered),
+                            c
+                        ))
+                    c+=1
+                rdic['strings'] = unicode(rdic['strings'])
+            except Exception as error:
+                WINEVENT_LOGGER.info("[PID: {}][{}] record index {}, id {}\tINFO: {}-{}\tRecovered: {}\tNot able to iterate strings.".format(
+                    pid,
+                    filename,
+                    i,
+                    record.identifier,
+                    str(type(error)),
+                    str(error),
+                    str(recovered)
+                ))
+                rdic['strings'] = None
         
         #Create unique hash#
         md5 = hashlib.md5()
