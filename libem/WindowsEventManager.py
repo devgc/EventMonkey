@@ -75,7 +75,6 @@ WINEVENT_FIELD_MAPPING = {
 }
 
 def DescriptionLoader(EVENT_ID_DESCRIPTIONS):
-    print(u'Loading YAML Descriptors...')
     if not os.path.isdir(DESCRIPTION_FOLDER):
         raise Exception('Description folder is not a directory: {}'.format(DESCRIPTION_FOLDER))
     
@@ -93,7 +92,6 @@ def DescriptionLoader(EVENT_ID_DESCRIPTIONS):
                 descriptions = yaml.load(fh)
                 EVENT_ID_DESCRIPTIONS[channel] = descriptions
                 fh.close()
-    print(u'YAML Descriptors Loaded')
 
 DescriptionLoader(EVENT_ID_DESCRIPTIONS)
 
