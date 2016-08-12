@@ -65,6 +65,29 @@ elastic_config:
   http_auth: ['user','password']
 ```
 
+## Dependencies
+* libevt and libevtx
+ * Get the compiled binaries:<br/>
+https://github.com/log2timeline/l2tbinaries
+ * Source code:<br/>
+https://github.com/libyal/libevtx<br/>
+https://github.com/libyal/libevt<br/>
+
+- PyYAML
+ - Get the compiled binaries:<br/>
+http://pyyaml.org/wiki/PyYAML
+
+- lxml
+ - `pip install lxml`
+
+- bs4 (beautifulsoup4)
+ - `pip install bs4`
+ - Project Info:<br/>
+https://pypi.python.org/pypi/beautifulsoup4
+
+- progressbar2
+ - `pip install progressbar2`
+
 ## Do Things Like:
 Easier viewing and filtering using customizable tags and descriptions
 ![Security Descriptions and Tagging](https://github.com/devgc/EventMonkey/blob/master/examples/DescriptionsAndTags.png)
