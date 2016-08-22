@@ -183,7 +183,7 @@ class WindowsEventManager():
         '''Create output path if not exists'''
         try:
             os.makedirs(self.options.output_path)
-        except WindowsError as e:
+        except OSError as e:
             # Output already exists
             pass
         except Exception as e:
