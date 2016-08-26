@@ -17,7 +17,8 @@
   tags: None
 517:
   description: "The audit log was cleared"
-  tags: None
+  tags: 
+    - "Warning"
 518:
   description: "A notification package has been loaded by the Security Account Manager"
   tags: None
@@ -233,25 +234,35 @@
   tags: None
 624:
   description: "User Account Created"
-  tags: None
+  tags:
+    - "Account"
+	- "New Account"
 625:
   description: "User Account Type Changed"
-  tags: None
+  tags: 
+    - "Account"
 626:
   description: "User Account Enabled"
-  tags: None
+  tags: 
+    - "Account"
 627:
   description: "Change Password Attempt"
-  tags: None
+  tags:
+    - "Account"
+	- "Password"
 628:
   description: "User Account password set"
-  tags: None
+  tags:
+    - "Account"
+	- "Password"
 629:
   description: "User Account Disabled"
-  tags: None
+  tags:
+    - "Account"
 630:
   description: "User Account Deleted"
-  tags: None
+  tags:
+    - "Account"
 631:
   description: "Security Enabled Global Group Created"
   tags:
@@ -1148,7 +1159,8 @@
     - "Change"
 4782:
   description: "The password hash an account was accessed"
-  tags: None
+  tags: 
+    - "Password"
 4783:
   description: "A basic application group was created"
   tags:
@@ -1215,10 +1227,12 @@
     - "Unlock"
 4802:
   description: "The screen saver was invoked"
-  tags: None
+  tags:
+    - "Screen Saver"
 4803:
   description: "The screen saver was dismissed"
-  tags: None
+  tags:
+    - "Screen Saver"
 4816:
   description: "RPC detected an integrity violation while decrypting an incoming message"
   tags: None
@@ -1432,10 +1446,12 @@
     - "Active Directory"
 4935:
   description: "Replication failure begins"
-  tags: None
+  tags: 
+    - "Replication"
 4936:
   description: "Replication failure ends"
-  tags: None
+  tags:
+    - "Replication"
 4937:
   description: "A lingering object was removed from a replica"
   tags: None
@@ -1738,19 +1754,23 @@
   tags: None
 5140:
   description: "A network share object was accessed"
-  tags: None
+  tags: 
+    - "Share"
 5141:
   description: "A directory service object was deleted"
   tags: None
 5142:
   description: "A network share object was added."
-  tags: None
+  tags: 
+    - "Share"
 5143:
   description: "A network share object was modified"
-  tags: None
+  tags:
+    - "Share"
 5144:
   description: "A network share object was deleted."
-  tags: None
+  tags:
+    - "Share"
 5145:
   description: "A network share object was checked to see whether client can be granted desired access"
   tags: None
