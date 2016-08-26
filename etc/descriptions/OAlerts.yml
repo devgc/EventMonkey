@@ -1,0 +1,53 @@
+#Saving this as a placeholder to build out OAlerts.evtx (Office Alerts Event Log)
+# 1* == Excel
+100078:
+  description: "Circular Reference"
+  tags: None
+
+100113:
+  description: "File is already open"
+  tags: None
+
+100144:
+  description: "File is read only, cannot be saved"
+  tags: None
+
+100175:
+  description: "No items found in search"
+  tags: None
+
+100182:
+  description: "Couldn't free up Clipboard"
+  tags: None
+
+100216:
+  description: "Save changes?"
+  tags: None
+
+100219:
+  description: "Only convert one column at a time"
+  tags: None
+
+100273:
+  description: "Deleting Sheets"
+  tags: None
+
+100433:
+  description: "Merged cells will be unmerged"
+  tags: None
+
+100834:
+  description: "No data selected to parse"
+  tags: None
+
+101013:
+  description: "Formula error and correction"
+  tags: None
+
+101127:
+  description: "Find/replace complete"
+  tags: None
+
+101608:
+  description: "Delete name"
+  tags: None
