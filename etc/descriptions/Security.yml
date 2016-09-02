@@ -236,7 +236,7 @@
   description: "User Account Created"
   tags:
     - "Account"
-	- "New Account"
+    - "New Account"
 625:
   description: "User Account Type Changed"
   tags: 
@@ -249,12 +249,12 @@
   description: "Change Password Attempt"
   tags:
     - "Account"
-	- "Password"
+    - "Password"
 628:
   description: "User Account password set"
   tags:
     - "Account"
-	- "Password"
+    - "Password"
 629:
   description: "User Account Disabled"
   tags:
