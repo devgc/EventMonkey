@@ -651,9 +651,9 @@ def HandleRecords(filename,options,eventfile_type,record_list,recovered,dbHandle
             rdic['source_name']=getattr(record,'source_name',None)
             rdic['user_security_identifier']=getattr(record,'user_security_identifier',None)
             rdic['written_time']=getattr(record,'written_time',None)
-                
-        rdic['strings']=''
-        rdic['xml_string']=xml_string.encode('utf-8','replace')
+        
+        rdic['strings'] = ''
+        rdic['xml_string'] = xml_string
         
         c = 0
         
