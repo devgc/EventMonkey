@@ -47,7 +47,8 @@ WINEVENT_COLUMN_ORDER = [
     'creation_time',
     'written_time',
     'xml_string',
-    'data'
+    'data',
+    'recovered'
 ]
 
 WINEVENT_FIELD_MAPPING = {
@@ -70,8 +71,9 @@ WINEVENT_FIELD_MAPPING = {
     'user_security_identifier':'TEXT',
     'creation_time':'DATETIME',
     'written_time':'DATETIME',
-    'xml_string':'TEXT',
+    'xml_string':'BLOB',
     'data':'BLOB',
+    'recovered':'INT'
 }
 
 def DescriptionLoader(EVENT_ID_DESCRIPTIONS):
@@ -511,6 +513,10 @@ def HandleRecords(filename,options,eventfile_type,record_list,recovered,dbHandle
     pid = os.getpid()
     sql_records = []
     
+    recovered_flag = 0
+    if recovered:
+        recovered_flag = 1
+    
     for i in range(len(record_list)):
         progressBar.Increment(1)
         try:
@@ -707,7 +713,8 @@ def HandleRecords(filename,options,eventfile_type,record_list,recovered,dbHandle
             'we_recovered':recovered,
             'we_index':i,
             'we_description':we_description,
-            'we_tags':str(we_tags)
+            'we_tags':str(we_tags),
+            'recovered':recovered_flag
         }
         
         sql_insert.update(rdic)
