@@ -26,13 +26,10 @@
             "encoding": "utf8"
         },
 		"database_error_handler": {
-            "class": "logging.handlers.RotatingFileHandler",
+            "class": "logging.FileHandler",
             "level": "DEBUG",
             "formatter": "custom1",
-            "filename": "logs/dbhandler.log",
-            "maxBytes": 10485760,
-            "backupCount": 20,
-            "encoding": "utf8"
+            "filename": "logs/dbhandler.log"
         },
 		"elastic_handler": {
             "class": "logging.handlers.RotatingFileHandler",
