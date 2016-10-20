@@ -62,7 +62,7 @@ def GetArguements():
         required=True,
         action="store",
         type=unicode,
-        help='Path to Event Files'
+        help=u'Name to prepend to output files'
     )
     
     arguements.add_argument(
@@ -71,7 +71,7 @@ def GetArguements():
         required=True,
         action="store",
         type=unicode,
-        help='Path to Event Files'
+        help=u'Path to Event Files'
     )
     
     arguements.add_argument(
