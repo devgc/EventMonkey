@@ -78,7 +78,8 @@ https://github.com/libyal/libevt<br/>
 http://pyyaml.org/wiki/PyYAML
 
 - lxml
- - `pip install lxml`
+ - Get the compiled binaries:<br/>
+https://pypi.python.org/pypi/lxml/3.4.0
 
 - bs4 (beautifulsoup4)
  - `pip install bs4`
