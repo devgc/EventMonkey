@@ -697,14 +697,17 @@ def HandleRecords(filename,options,eventfile_type,record_list,recovered,dbHandle
         we_tags = None
         
         if drec is not None:
-            if drec['System']['EventID']['#text'] is not None:
-                if drec['System']['Channel']['#text'] is not None:
-                    try:
-                        we_description = EVENT_ID_DESCRIPTIONS[unicode(drec['System']['Channel']['#text'])][int(drec['System']['EventID']['#text'])]['description']
-                        we_tags = EVENT_ID_DESCRIPTIONS[unicode(drec['System']['Channel']['#text'])][int(drec['System']['EventID']['#text'])]['tags']
-                        pass
-                    except:
-                        pass
+            try:
+                if drec['System']['EventID']['#text'] is not None:
+                    if drec['System']['Channel']['#text'] is not None:
+                        try:
+                            we_description = EVENT_ID_DESCRIPTIONS[unicode(drec['System']['Channel']['#text'])][int(drec['System']['EventID']['#text'])]['description']
+                            we_tags = EVENT_ID_DESCRIPTIONS[unicode(drec['System']['Channel']['#text'])][int(drec['System']['EventID']['#text'])]['tags']
+                            pass
+                        except:
+                            pass
+            except:
+                pass
         
         sql_insert = {
             'we_hash_id':hash_id,
