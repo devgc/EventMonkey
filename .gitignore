@@ -5,3 +5,4 @@ logs
 tools
 utils
 *.pyc
+*.gz
