@@ -500,7 +500,7 @@ class WindowsEventHandler():
         
 def GetIpAdressInfo(ipHandler,xml_event):
     info_list = []
-    for match in re.finditer('((?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))',xml_event):
+    for match in re.finditer('[^_]((?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))[^_]',xml_event):
         ip_adress = match.group(1)
         info = ipHandler.GetIpInfo(ip_adress)
         info_list.append(info)
