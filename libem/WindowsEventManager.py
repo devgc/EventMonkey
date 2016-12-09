@@ -19,10 +19,12 @@ import ProgressManager
 import DbHandler
 import elastichandler
 import Config
+import IpManager
 
 WINEVENT_LOGGER = logging.getLogger('WinEvent')
 WINEVENT_MAPPING_FILE = 'etc/evtx.mapping.json'
 DESCRIPTION_FOLDER = 'etc/descriptions'
+GEODB = 'geodb'
 
 EVENT_ID_DESCRIPTIONS = {}
 
@@ -48,7 +50,8 @@ WINEVENT_COLUMN_ORDER = [
     'written_time',
     'xml_string',
     'data',
-    'recovered'
+    'recovered',
+    'we_ip_info'
 ]
 
 WINEVENT_FIELD_MAPPING = {
@@ -73,7 +76,8 @@ WINEVENT_FIELD_MAPPING = {
     'written_time':'DATETIME',
     'xml_string':'BLOB',
     'data':'BLOB',
-    'recovered':'INT'
+    'recovered':'INT',
+    'we_ip_info':'JSON'
 }
 
 def DescriptionLoader(EVENT_ID_DESCRIPTIONS):
@@ -417,6 +421,10 @@ class WindowsEventHandler():
         )
         dbHandler = dbConfig.GetDbHandle()
         
+        # Ip Handler #
+        ipHandler = IpManager.IpHandler()
+        ipHandler.AttachGeoDbs(GEODB)
+        
         # Create Elastic Handler
         if options.eshost is not None:
             es_options = elastichandler.GetEsOptions(
@@ -434,6 +442,7 @@ class WindowsEventHandler():
                 ))
             else:
                 HandleRecords(
+                    ipHandler,
                     self.filename,
                     options,
                     self.eventfile_type,
@@ -451,6 +460,7 @@ class WindowsEventHandler():
                 ))
             else:
                 HandleRecords(
+                    ipHandler,
                     self.filename,
                     options,
                     self.eventfile_type,
@@ -467,6 +477,7 @@ class WindowsEventHandler():
                 ))
             else:
                 HandleRecords(
+                    ipHandler,
                     self.filename,
                     options,
                     self.eventfile_type,
@@ -487,6 +498,18 @@ class WindowsEventHandler():
             pid,self.filename
         ))
         
+def GetIpAdressInfo(ipHandler,xml_event):
+    info_list = []
+    for match in re.finditer('[^_]((?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))[^_]',xml_event):
+        ip_adress = match.group(1)
+        info = ipHandler.GetIpInfo(ip_adress)
+        info_list.append(info)
+        
+    if len(info_list) == 0:
+        return None
+    
+    return info_list
+    
 def IsSupportedEvtXtractFile(fullname):
     result = False
     
@@ -509,7 +532,7 @@ def IsSupportedEvtXtractFile(fullname):
     
     return result
         
-def HandleRecords(filename,options,eventfile_type,record_list,recovered,dbHandler,elastic_actions,progressBar):
+def HandleRecords(ipHandler,filename,options,eventfile_type,record_list,recovered,dbHandler,elastic_actions,progressBar):
     pid = os.getpid()
     sql_records = []
     
@@ -581,6 +604,11 @@ def HandleRecords(filename,options,eventfile_type,record_list,recovered,dbHandle
             drec = XmlHandler.GetDictionary(record['xml'].decode('string_escape'),force_list=list_names)['Event']
             jrec = json.dumps(drec)
         #########################################################################################################
+        
+        # Get Ip Info #
+        ip_info = GetIpAdressInfo(ipHandler,xml_string)
+        if ip_info:
+            ip_info = json.dumps(ip_info)
         
         rdic = {}
         rdic['eventfile_type']=eventfile_type
@@ -714,7 +742,8 @@ def HandleRecords(filename,options,eventfile_type,record_list,recovered,dbHandle
             'we_index':i,
             'we_description':we_description,
             'we_tags':str(we_tags),
-            'recovered':recovered_flag
+            'recovered':recovered_flag,
+            'we_ip_info':ip_info
         }
         
         sql_insert.update(rdic)
@@ -748,7 +777,8 @@ def HandleRecords(filename,options,eventfile_type,record_list,recovered,dbHandle
                 'source_filename':filename,
                 'index':i,
                 'tags':we_tags,
-                'description':we_description
+                'description':we_description,
+                'ip_info':ip_info
             })
             
             action = {
