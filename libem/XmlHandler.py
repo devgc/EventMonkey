@@ -41,7 +41,6 @@ class Xml(dict):
         
         if ttype == list:
             current_tag = {}
-            current_tag[tag.name] = {}
         else:
             current_tag = {}
             current_tag[tag.name] = {}
