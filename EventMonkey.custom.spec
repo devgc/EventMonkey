@@ -11,6 +11,7 @@ a = Analysis(
         ('./etc/*.json', 'etc'),
         ('./etc/descriptions/*.yml', 'etc/descriptions'),
         ('./licenses/LICENSE.*','licenses'),
+        ('./xlsx_templates/*.yml','xlsx_templates'),
     ],
     hiddenimports=[],
     hookspath=[],

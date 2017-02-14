@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import sys
+import os
 import argparse
 import logging
 import multiprocessing
-
+    
 #From https://github.com/pyinstaller/pyinstaller/wiki/Recipe-Multiprocessing
 try:
     # Python 3.4+
@@ -41,6 +42,9 @@ if sys.platform.startswith('win'):
 
 import libem.WindowsEventManager as WindowsEventManager
 import libem.Config as Config
+from libem import Utilities
+from gchelpers.db.DbHandler import DbConfig
+from gchelpers.writers import XlsxHandler
 
 Config.Config.InitLoggers()
 Config.Config.SetUiToCLI()
@@ -55,7 +59,6 @@ def GetArguements():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         description=(usage)
     )
-    
     arguements.add_argument(
         '-n','--evidencename',
         dest='evidencename',
@@ -64,7 +67,6 @@ def GetArguements():
         type=unicode,
         help=u'Name to prepend to output files'
     )
-    
     arguements.add_argument(
         '-p','--path',
         dest='events_path',
@@ -73,7 +75,6 @@ def GetArguements():
         type=unicode,
         help=u'Path to Event Files'
     )
-    
     arguements.add_argument(
         '-o','--output_path',
         dest='output_path',
@@ -82,7 +83,6 @@ def GetArguements():
         type=unicode,
         help='Output Path'
     )
-    
     arguements.add_argument(
         '--threads',
         dest='threads_to_use',
@@ -90,6 +90,19 @@ def GetArguements():
         type=int,
         default=Config.Config.CPU_COUNT,
         help='Number of threads to use (default is all [{}])'.format(Config.Config.CPU_COUNT)
+    )
+    
+    arguements.add_argument(
+        '-f','--templatefolder',
+        dest='templatefolder',
+        default=Utilities.GetResource(
+            'xlsx_templates',
+            'xlsx_templates',
+            ''
+        ),
+        action="store",
+        type=unicode,
+        help=u'Folder of Template Files'
     )
     
     arguements.add_argument(
@@ -143,10 +156,29 @@ def Main():
     arguements = GetArguements()
     options = arguements.parse_args()
     
+    ### Set Database name
+    options.db_name = os.path.join(
+        options.output_path,
+        options.evidencename+'.db'
+    )
+    
     manager = WindowsEventManager.WindowsEventManager(
         options
     )
     manager.ProcessEvents()
+    
+    ### Reports ###
+    db_config = DbConfig(
+        db_type='sqlite',
+        db=options.db_name
+    )
+    temp_manager = XlsxHandler.XlsxTemplateManager(
+        options.templatefolder
+    )
+    temp_manager.CreateReports(
+        db_config,
+        options.output_path
+    )
 
 if __name__ == '__main__':
     Main()

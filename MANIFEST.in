@@ -1,2 +1,3 @@
 include etc/*.json
 include etc/descriptions/*.yml
+include xlsx_templates/*.yml

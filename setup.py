@@ -19,11 +19,15 @@ setup(
     license="Apache Software License v2",
     zip_safe=False,
     include_package_data=True,
+    dependency_links = [
+        'https://github.com/devgc/GcHelpers/tarball/master#egg=gchelpers-0.0.1'
+    ],
     install_requires=[
         'lxml',
         'bs4',
         'progressbar2',
-        'pyyaml'
+        'pyyaml',
+        'gchelpers==0.0.1'
     ],
     packages=find_packages(
         '.'

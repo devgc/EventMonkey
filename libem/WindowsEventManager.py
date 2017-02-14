@@ -169,10 +169,11 @@ class WindowsEventManager():
         self._InitEsIndex()
         
     def _InitDb(self):
-        self.options.db_name = os.path.join(
-            self.options.output_path,
-            self.options.evidencename+'.db'
-        )
+        if not getattr(self.options,'db_name',None):
+            self.options.db_name = os.path.join(
+                self.options.output_path,
+                self.options.evidencename+'.db'
+            )
         
         dbConfig = DbHandler.DbConfig(
             db_type = 'sqlite',

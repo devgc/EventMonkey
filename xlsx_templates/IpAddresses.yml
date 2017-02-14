@@ -1,0 +1,56 @@
+### A Report Tempate ###
+#The XLSX report to use#
+workbook_name: 'EventIpAddresses.xlsx'
+worksheets:
+  #The worksheet/tab to create the report in#
+  - worksheet_name: 'EventIpAddresses'
+    worksheet_type: 'records'
+    attributes:
+      #If you want to freeze panes#
+      freeze_panes:
+          row: 1
+      #The SQLite Query to run#
+      sql_query: |
+          SELECT
+          	written_time AS "Time",
+          	source_name AS "SourceName",
+          	event_identifier AS "EventId",
+          	identifier AS "Identifier",
+          	hit.value AS "IpAddress",
+          	json_extract(GetIpInfo(hit.value),'$.country') AS "IpCountry",
+          	RemoveNewLines(xml_string) AS "Event"
+          FROM
+          	winevent,
+          	json_each(
+          		GetRegMatchArray(
+          			xml_string,
+          			1,
+          			'\b((?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))\b'
+          		)
+          	) AS hit
+          WHERE xml_string REGEXP '\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b'
+          ORDER BY written_time DESC;
+  - worksheet_name: 'DistinctIpAddresses'
+    worksheet_type: 'records'
+    attributes:
+      #If you want to freeze panes#
+      freeze_panes:
+          row: 1
+      #The SQLite Query to run#
+      sql_query: |
+          SELECT DISTINCT
+          	source_name AS "SourceName",
+          	hit.value AS "IpAddress",
+          	json_extract(GetIpInfo(hit.value),'$.country') AS "IpCountry",
+          	count(*) AS "EventCount"
+          FROM
+          	winevent,
+          	json_each(
+          		GetRegMatchArray(
+          			xml_string,
+          			1,
+          			'\b((?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))\b'
+          		)
+          	) AS hit
+          WHERE xml_string REGEXP '\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b'
+          GROUP BY "SourceName","IpAddress";
