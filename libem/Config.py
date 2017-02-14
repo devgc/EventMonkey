@@ -6,7 +6,9 @@ import multiprocessing
 import os
 import json
 import logging
+import glob
 from logging.config import dictConfig
+from libem import Utilities
 
 class Config():
 	UI_CLI = 0
@@ -26,17 +28,28 @@ class Config():
 	)
 	
 	@staticmethod
-	def InitLoggers(path='etc/log_config.json'):
-		# Make sure logdir exists#
-		if not os.path.exists('logs'):
+	def InitLoggers():
+		# If no logs dir, make one
+		if not os.path.isdir('logs'):
 			os.makedirs('logs')
 			
-		if os.path.exists(path):
-			with open(path, 'rb') as f:
-				config = json.load(f)
-			logging.config.dictConfig(config)
-		else:
-			raise Exception('No json log configuration file found at: {}'.format(path))
+		log_config_path = Utilities.GetResource(
+			'etc',
+			'etc',
+			'log_config.json'
+		)
+		
+		with open(log_config_path, 'rb') as f:
+			config = json.load(f)
+			
+		logging.config.dictConfig(config)
+		
+	@staticmethod
+	def ClearLogs():
+		if os.path.isdir('logs'):
+			filelist = glob.glob("logs/*.log")
+			for f in filelist:
+				open(f, 'w+')
 	
 	@staticmethod
 	def SetUiToCLI():

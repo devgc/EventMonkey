@@ -17,55 +17,51 @@
             "stream": "ext://sys.stdout"
         },
 		"main_handler": {
-            "class": "logging.handlers.RotatingFileHandler",
+            "class": "logging.FileHandler",
             "level": "DEBUG",
             "formatter": "custom1",
             "filename": "logs/main.log",
-            "maxBytes": 10485760,
-            "backupCount": 20,
-            "encoding": "utf8"
+            "encoding": "utf8",
+            "mode":"a"
         },
 		"database_error_handler": {
             "class": "logging.FileHandler",
             "level": "DEBUG",
             "formatter": "custom1",
-            "filename": "logs/dbhandler.log"
+            "filename": "logs/dbhandler.log",
+            "mode":"a"
         },
 		"elastic_handler": {
-            "class": "logging.handlers.RotatingFileHandler",
+            "class": "logging.FileHandler",
             "level": "DEBUG",
             "formatter": "custom1",
             "filename": "logs/elastic.log",
-            "maxBytes": 10485760,
-            "backupCount": 20,
-            "encoding": "utf8"
+            "encoding": "utf8",
+            "mode":"a"
         },
         "progress_manager_handler":{
-            "class": "logging.handlers.RotatingFileHandler",
+            "class": "logging.FileHandler",
             "level": "DEBUG",
             "formatter": "custom1",
             "filename": "logs/progressbar.log",
-            "maxBytes": 10485760,
-            "backupCount": 20,
-            "encoding": "utf8"
+            "encoding": "utf8",
+            "mode":"a"
         },
         "xml_handler":{
-            "class": "logging.handlers.RotatingFileHandler",
+            "class": "logging.FileHandler",
             "level": "DEBUG",
             "formatter": "custom1",
             "filename": "logs/xmlhandler.log",
-            "maxBytes": 10485760,
-            "backupCount": 20,
-            "encoding": "utf8"
+            "encoding": "utf8",
+            "mode":"a"
         },
 		"windows_event_handler":{
-            "class": "logging.handlers.RotatingFileHandler",
+            "class": "logging.FileHandler",
             "level": "DEBUG",
             "formatter": "custom1",
             "filename": "logs/windowsevents.log",
-            "maxBytes": 10485760,
-            "backupCount": 20,
-            "encoding": "utf8"
+            "encoding": "utf8",
+            "mode":"a"
         }
     },
     "loggers": {

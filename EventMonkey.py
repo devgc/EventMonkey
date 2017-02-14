@@ -137,6 +137,8 @@ def GetArguements():
 
 def Main():
     multiprocessing.freeze_support()
+    Config.Config.ClearLogs()
+    
     ###GET OPTIONS###
     arguements = GetArguements()
     options = arguements.parse_args()
