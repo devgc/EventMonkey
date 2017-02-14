@@ -7,7 +7,7 @@ View more information on the [wiki](https://github.com/devgc/EventMonkey/wiki)!
 Three types of files are currently supported:
 - Native evt
 - Native evtx
-- EvtXtract's json recovered records file
+- EvtXtract's json recovered records file [Does not work with most recent EvtXtract output]
 
 If you are using [EVTXtract](https://github.com/williballenthin/EVTXtract) output, just stick the .json files in the path specified with -p
 
