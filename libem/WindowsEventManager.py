@@ -19,10 +19,19 @@ import ProgressManager
 import DbHandler
 import elastichandler
 import Config
+from libem import Utilities
 
 WINEVENT_LOGGER = logging.getLogger('WinEvent')
-WINEVENT_MAPPING_FILE = 'etc/evtx.mapping.json'
-DESCRIPTION_FOLDER = 'etc/descriptions'
+WINEVENT_MAPPING_FILE = Utilities.GetResource(
+    'etc',
+    'etc',
+    'evtx.mapping.json'
+)
+DESCRIPTION_FOLDER = Utilities.GetResource(
+    'etc/descriptions',
+    'etc.descriptions',
+    ''
+)
 
 EVENT_ID_DESCRIPTIONS = {}
 
