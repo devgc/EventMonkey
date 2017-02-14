@@ -6,3 +6,4 @@ tools
 utils
 *.pyc
 *.gz
+eventmonkey.egg*
