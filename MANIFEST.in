@@ -1,0 +1,2 @@
+include etc/*.json
+include etc/descriptions/*.yml
