@@ -12,19 +12,35 @@ Three types of files are currently supported:
 If you are using [EVTXtract](https://github.com/williballenthin/EVTXtract) output, just stick the .json files in the path specified with -p
 
 ## Usage
-
+EventMonkey now has two sub commands. The 'process' command is for processing event files and generating reports while the 'report' command is just for creating reports from the resulting database. You can create your own custom templates and pass the folder to EventMonkey as well.
 ```
-usage: EventMonkey.py [-h] -n EVIDENCENAME -p EVENTS_PATH -o OUTPUT_PATH
-                      [--threads THREADS_TO_USE] [--esconfig ESCONFIG]
-                      [--esurl ESURL] [--eshost ESHOST] [--esuser ESUSER]
-                      [--espass ESPASS]
+usage: EventMonkey.py [-h] [-f TEMPLATEFOLDER] {process,report} ...
 
 EventMonkey (A Windows Event Parsing Utility)
+
+positional arguments:
+  {process,report}      Either process or report command is required.
+    process             Processes eventfiles and then generate reports.
+    report              Generate reports from an existing EventMonkey
+                        database.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -f TEMPLATEFOLDER, --templatefolder TEMPLATEFOLDER
+                        Folder of Template Files
+```
+### Processing
+```
+usage: EventMonkey.py process [-h] -n EVIDENCENAME -p EVENTS_PATH -o
+                              OUTPUT_PATH [--threads THREADS_TO_USE]
+                              [--esconfig ESCONFIG] [--esurl ESURL]
+                              [--eshost ESHOST] [--esuser ESUSER]
+                              [--espass ESPASS]
 
 optional arguments:
   -h, --help            show this help message and exit
   -n EVIDENCENAME, --evidencename EVIDENCENAME
-                        Path to Event Files
+                        Name to prepend to output files
   -p EVENTS_PATH, --path EVENTS_PATH
                         Path to Event Files
   -o OUTPUT_PATH, --output_path OUTPUT_PATH
@@ -36,6 +52,16 @@ optional arguments:
   --eshost ESHOST       Elastic Host IP
   --esuser ESUSER       Elastic Host User
   --espass ESPASS       Elastic Password [if not supplied, will prompt]
+```
+
+### Reporting
+```
+usage: EventMonkey.py report [-h] -d DB_NAME
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d DB_NAME, --database DB_NAME
+                        Database to run reports on
 ```
 
 ## Creating Descriptions and Tags
