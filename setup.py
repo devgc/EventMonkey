@@ -10,12 +10,12 @@ except ImportError:
 
 setup(
     name='eventmonkey',
-    version='1.2.0',
+    version='1.3.0',
     description='A Windows Event Processing Utility',
     author = 'G-C Partners, LLC',
     author_email = 'dev@g-cpartners.com',
     url='https://github.com/devgc/EventMonkey',
-    download_url = 'https://github.com/devgc/EventMonkey/archive/1.2.0.tar.gz',
+    download_url = 'https://github.com/devgc/EventMonkey/archive/1.3.0.tar.gz',
     license="Apache Software License v2",
     zip_safe=False,
     include_package_data=True,
@@ -27,7 +27,8 @@ setup(
         'bs4',
         'progressbar2',
         'pyyaml',
-        'gchelpers==0.0.1'
+        'gchelpers==0.0.1',
+        'python-dateutil==2.4.2'
     ],
     packages=find_packages(
         '.'

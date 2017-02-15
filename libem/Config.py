@@ -15,7 +15,7 @@ class Config():
 	UI_GUI = 1
 	UI_TYPE = None
 	
-	VERSION = '1.2.0'
+	VERSION = '1.3.0'
 	STARTTIME = time.time()
 	CPU_COUNT = multiprocessing.cpu_count()
 	CPU_USE = CPU_COUNT
