@@ -45,6 +45,8 @@ import libem.Config as Config
 from libem import Utilities
 from gchelpers.db.DbHandler import DbConfig
 from gchelpers.writers import XlsxHandler
+from gchelpers.db import SqliteCustomFunctions
+from gchelpers.ip.GeoDbManager import GeoDbManager
 
 Config.Config.InitLoggers()
 Config.Config.SetUiToCLI()
@@ -134,6 +136,14 @@ def SetReportingArguments(parser):
         type=unicode,
         help=u'Database to run reports on'
     )
+    parser.add_argument(
+        '-o','--output_path',
+        dest='output_path',
+        required=True,
+        action="store",
+        type=unicode,
+        help='Output Path'
+    )
 
 def GetArguements():
     '''Get needed options for processesing'''
@@ -176,6 +186,20 @@ def GetArguements():
     
     return arguements
 
+def InitGeoDb(geodb_file):
+    geodb_path = os.path.dirname(geodb_file)
+    if not os.path.isdir(geodb_path):
+        os.makedirs(geodb_path)
+    
+    if not os.path.isfile(geodb_file):
+        SqliteCustomFunctions.GEO_MANAGER.UpdateGoeIpDbs(
+            geodb_path=geodb_path
+        )
+    
+    SqliteCustomFunctions.GEO_MANAGER.AttachGeoDbs(
+        geodb_path
+    )
+
 def Main():
     multiprocessing.freeze_support()
     Config.Config.ClearLogs()
@@ -183,6 +207,23 @@ def Main():
     ###GET OPTIONS###
     arguements = GetArguements()
     options = arguements.parse_args()
+    
+    # Check if there is geodb if frozen
+    if getattr(sys,'frozen',False):
+        geodb_file = os.path.join(
+            'geodb',
+            'GeoLite2-City.mmdb'
+        )
+        
+        if not os.path.isfile(geodb_file):
+            if GetYesNo(("There is no geodb found, would you like to download it? "
+                        "This is required for using basic Geo IP support within the "
+                        "report queries. If you choose not to use this functionality "
+                        "expect errors for templates that use custom functions calling "
+                        "geoip functions.")):
+                InitGeoDb(geodb_file)
+        else:
+            SqliteCustomFunctions.GEO_MANAGER.AttachGeoDbs('geodb')
     
     if options.subparser_name == "process":
         options.db_name = os.path.join(
@@ -211,6 +252,39 @@ def CreateReports(options):
         db_config,
         options.output_path
     )
+
+# Thanks to http://code.activestate.com/recipes/577058/
+def GetYesNo(message, default="yes"):
+    """Ask a yes/no question via raw_input() and return their answer.
+    
+    "message" is a string that is presented to the user.
+    "default" is the presumed answer if the user just hits <Enter>.
+        It must be "yes" (the default), "no" or None (meaning
+        an answer is required of the user).
+
+    The "answer" return value is one of True or False.
+    """
+    valid = {"yes":True,   "y":True,  "ye":True,
+             "no":False,     "n":False}
+    if default == None:
+        prompt = " [y/n] "
+    elif default == "yes":
+        prompt = " [Y/n] "
+    elif default == "no":
+        prompt = " [y/N] "
+    else:
+        raise ValueError("invalid default answer: '%s'" % default)
+
+    while 1:
+        sys.stdout.write(message + prompt)
+        choice = raw_input().lower()
+        if default is not None and choice == '':
+            return default
+        elif choice in valid.keys():
+            return valid[choice]
+        else:
+            sys.stdout.write("Please respond with 'yes' or 'no' "\
+                             "(or 'y' or 'n').\n")
 
 if __name__ == '__main__':
     Main()
