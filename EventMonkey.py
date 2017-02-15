@@ -51,6 +51,90 @@ Config.Config.SetUiToCLI()
 
 MAIN_LOGGER = logging.getLogger('Main')
 
+def SetProcessingArguments(parser):
+    parser.add_argument(
+        '-n','--evidencename',
+        dest='evidencename',
+        required=True,
+        action="store",
+        type=unicode,
+        help=u'Name to prepend to output files'
+    )
+    parser.add_argument(
+        '-p','--path',
+        dest='events_path',
+        required=True,
+        action="store",
+        type=unicode,
+        help=u'Path to Event Files'
+    )
+    parser.add_argument(
+        '-o','--output_path',
+        dest='output_path',
+        required=True,
+        action="store",
+        type=unicode,
+        help='Output Path'
+    )
+    parser.add_argument(
+        '--threads',
+        dest='threads_to_use',
+        action="store",
+        type=int,
+        default=Config.Config.CPU_COUNT,
+        help='Number of threads to use (default is all [{}])'.format(Config.Config.CPU_COUNT)
+    )
+    parser.add_argument(
+        '--esconfig',
+        dest='esconfig',
+        action="store",
+        type=unicode,
+        default=None,
+        help='Elastic YAML Config File'
+    )
+    parser.add_argument(
+        '--esurl',
+        dest='esurl',
+        action="store",
+        type=unicode,
+        default=None,
+        help='Elastic RFC-1738 URL'
+    )
+    parser.add_argument(
+        '--eshost',
+        dest='eshost',
+        action="store",
+        type=str,
+        default=None,
+        help='Elastic Host IP'
+    )
+    parser.add_argument(
+        '--esuser',
+        dest='esuser',
+        action="store",
+        type=str,
+        default=None,
+        help='Elastic Host User'
+    )
+    parser.add_argument(
+        '--espass',
+        dest='espass',
+        action="store",
+        type=unicode,
+        default=None,
+        help='Elastic Password [if not supplied, will prompt]'
+    )
+
+def SetReportingArguments(parser):
+    parser.add_argument(
+        '-d','--database',
+        dest='db_name',
+        required=True,
+        action="store",
+        type=unicode,
+        help=u'Database to run reports on'
+    )
+
 def GetArguements():
     '''Get needed options for processesing'''
     usage = '''EventMonkey (A Windows Event Parsing Utility)'''
@@ -59,39 +143,6 @@ def GetArguements():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         description=(usage)
     )
-    arguements.add_argument(
-        '-n','--evidencename',
-        dest='evidencename',
-        required=True,
-        action="store",
-        type=unicode,
-        help=u'Name to prepend to output files'
-    )
-    arguements.add_argument(
-        '-p','--path',
-        dest='events_path',
-        required=True,
-        action="store",
-        type=unicode,
-        help=u'Path to Event Files'
-    )
-    arguements.add_argument(
-        '-o','--output_path',
-        dest='output_path',
-        required=True,
-        action="store",
-        type=unicode,
-        help='Output Path'
-    )
-    arguements.add_argument(
-        '--threads',
-        dest='threads_to_use',
-        action="store",
-        type=int,
-        default=Config.Config.CPU_COUNT,
-        help='Number of threads to use (default is all [{}])'.format(Config.Config.CPU_COUNT)
-    )
-    
     arguements.add_argument(
         '-f','--templatefolder',
         dest='templatefolder',
@@ -104,46 +155,23 @@ def GetArguements():
         type=unicode,
         help=u'Folder of Template Files'
     )
-    
-    arguements.add_argument(
-        '--esconfig',
-        dest='esconfig',
-        action="store",
-        type=unicode,
-        default=None,
-        help='Elastic YAML Config File'
+    subparsers = arguements.add_subparsers(
+        help='Either process or report command is required.',
+        dest='subparser_name'
     )
-    arguements.add_argument(
-        '--esurl',
-        dest='esurl',
-        action="store",
-        type=unicode,
-        default=None,
-        help='Elastic RFC-1738 URL'
+    processing_parser = subparsers.add_parser(
+        'process',
+        help='Processes eventfiles and then generate reports.',
     )
-    arguements.add_argument(
-        '--eshost',
-        dest='eshost',
-        action="store",
-        type=str,
-        default=None,
-        help='Elastic Host IP'
+    SetProcessingArguments(
+        processing_parser
     )
-    arguements.add_argument(
-        '--esuser',
-        dest='esuser',
-        action="store",
-        type=str,
-        default=None,
-        help='Elastic Host User'
+    reporting_parser = subparsers.add_parser(
+        'report',
+        help='Generate reports from an existing EventMonkey database.',
     )
-    arguements.add_argument(
-        '--espass',
-        dest='espass',
-        action="store",
-        type=unicode,
-        default=None,
-        help='Elastic Password [if not supplied, will prompt]'
+    SetReportingArguments(
+        reporting_parser
     )
     
     return arguements
@@ -156,18 +184,22 @@ def Main():
     arguements = GetArguements()
     options = arguements.parse_args()
     
-    ### Set Database name
-    options.db_name = os.path.join(
-        options.output_path,
-        options.evidencename+'.db'
-    )
+    if options.subparser_name == "process":
+        options.db_name = os.path.join(
+            options.output_path,
+            options.evidencename+'.db'
+        )
+        manager = WindowsEventManager.WindowsEventManager(
+            options
+        )
+        manager.ProcessEvents()
+        CreateReports(options)
+    elif options.subparser_name == "report":
+        CreateReports(options)
+    else:
+        raise(Exception("Unknown subparser: {}".format(options.subparser_name)))
     
-    manager = WindowsEventManager.WindowsEventManager(
-        options
-    )
-    manager.ProcessEvents()
-    
-    ### Reports ###
+def CreateReports(options):
     db_config = DbConfig(
         db_type='sqlite',
         db=options.db_name
