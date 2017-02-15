@@ -1,3 +1,10 @@
+## [1.3.0] - 2017-02-15
+### Added
+- Added Excel template report creation
+
+### Changed
+- Interface commands: now option for processing or just reporting
+
 ## [1.2.1] - 2016-08-09
 ### Added
 - Added functionallity to add discriptions and tags to Security events
