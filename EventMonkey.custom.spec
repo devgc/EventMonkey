@@ -1,7 +1,5 @@
 # -*- mode: python -*-
-
 block_cipher = None
-
 
 a = Analysis(
     ['EventMonkey.py'],
@@ -13,7 +11,10 @@ a = Analysis(
         ('./licenses/LICENSE.*','licenses'),
         ('./xlsx_templates/*.yml','xlsx_templates'),
     ],
-    hiddenimports=[],
+    hiddenimports=[
+        'gchelpers',
+        'geodb'
+    ],
     hookspath=[],
     runtime_hooks=[],
     excludes=[],
