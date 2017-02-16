@@ -27,6 +27,7 @@ setup(
         'bs4',
         'progressbar2',
         'pyyaml',
+        'elasticsearch',
         'gchelpers==0.0.1',
         'python-dateutil==2.4.2'
     ],
