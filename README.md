@@ -119,6 +119,9 @@ https://pypi.python.org/pypi/beautifulsoup4
  - `pip install elasticsearch`
  
 ## Do Things Like:
+Automate Excel spreadsheet creation with templates
+![Template to XLSX](https://github.com/devgc/EventMonkey/blob/master/examples/Ingest_EVTXtract_records.png)
+
 Easier viewing and filtering using customizable tags and descriptions
 ![Security Descriptions and Tagging](https://github.com/devgc/EventMonkey/blob/master/examples/DescriptionsAndTags.png)
 
