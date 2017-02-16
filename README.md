@@ -114,7 +114,10 @@ https://pypi.python.org/pypi/beautifulsoup4
 
 - progressbar2
  - `pip install progressbar2`
-
+ 
+- elasticsearch
+ - `pip install elasticsearch`
+ 
 ## Do Things Like:
 Easier viewing and filtering using customizable tags and descriptions
 ![Security Descriptions and Tagging](https://github.com/devgc/EventMonkey/blob/master/examples/DescriptionsAndTags.png)
