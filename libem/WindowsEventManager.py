@@ -105,43 +105,6 @@ def DescriptionLoader(EVENT_ID_DESCRIPTIONS):
                 fh.close()
 
 DescriptionLoader(EVENT_ID_DESCRIPTIONS)
-
-def Main():
-    DEBUG_FILE = sys.argv[1]
-    RECORD_INDEX = sys.argv[2]
-    RECOVERED = sys.argv[3]
-    
-    if DEBUG_FILE.lower().endswith('.evt'):
-        evfile = pyevt.file()
-        evfile.open(DEBUG_FILE)
-    elif DEBUG_FILE.lower().endswith('.evtx'):
-        evfile = evtxfile.file()
-        evfile.open(DEBUG_FILE)
-    else:
-        print u'File needs .evt or .evtx extention. {}'.format(DEBUG_FILE)
-        sys.exit(1)
-        
-    if RECOVERED:
-        record = evtxfile.get_record(RECORD_INDEX)
-    else:
-        record = evtxfile.get_recovered_record(RECORD_INDEX)
-    
-    try:
-        xml_string = record.xml_string
-    except:
-        print u'Record has no xml_string'
-    
-    list_names = [
-        'Event.EventData.Data',
-        'Event.EventData.Binary',
-    ]
-    
-    drec = XmlHandler.GetDictionary(
-        xml_string,
-        force_list=list_names
-    )
-    
-    print drec
     
 class EvtXtractFile(object):
     def __init__(self):
@@ -789,6 +752,4 @@ def GetIndexName(index_name):
 
 def CleanIndexName(index_name):
     return re.sub('[^a-zA-Z0-9-]', '-', index_name)
-    
-if __name__ == '__main__':
-    Main()
+
