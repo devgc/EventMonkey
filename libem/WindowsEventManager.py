@@ -211,6 +211,9 @@ class WindowsEventManager():
         '''Get file listing of event files from specified source path'''
         self.filelist = []
         
+        if not os.path.isdir(self.options.events_path):
+            raise(Exception("Events directory does not exist: {}".format(self.options.events_path)))
+        
         for dirName, subdirList, fileList in os.walk(self.options.events_path):
             for filename in fileList:
                 fullname = os.path.join(
