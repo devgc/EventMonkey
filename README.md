@@ -92,31 +92,24 @@ elastic_config:
 ```
 
 ## Dependencies
-* libevt and libevtx
- * Get the compiled binaries:<br/>
-https://github.com/log2timeline/l2tbinaries
- * Source code:<br/>
-https://github.com/libyal/libevtx<br/>
-https://github.com/libyal/libevt<br/>
-
+- libevt and libevtx
+  - Get the compiled binaries: https://github.com/log2timeline/l2tbinaries
+  - Source code: https://github.com/libyal/libevtx, https://github.com/libyal/libevt
+- GcHelpers
+  - https://github.com/devgc/GcHelpers
+  - `pip install git+git://github.com/devgc/GcHelpers`
+  - or `setup.py install` from source.
 - PyYAML
- - Get the compiled binaries:<br/>
-http://pyyaml.org/wiki/PyYAML
-
+  - Get the compiled binaries: http://pyyaml.org/wiki/PyYAML
 - lxml
- - Get the compiled binaries:<br/>
-https://pypi.python.org/pypi/lxml/3.4.0
-
+  - Get the compiled binaries: https://pypi.python.org/pypi/lxml/3.4.0
 - bs4 (beautifulsoup4)
- - `pip install bs4`
- - Project Info:<br/>
-https://pypi.python.org/pypi/beautifulsoup4
-
+  - `pip install bs4`
+  - Project Info: https://pypi.python.org/pypi/beautifulsoup4
 - progressbar2
- - `pip install progressbar2`
- 
+  - `pip install progressbar2`
 - elasticsearch
- - `pip install elasticsearch`
+  - `pip install elasticsearch`
  
 ## Do Things Like:
 Automate Excel spreadsheet creation with templates
