@@ -11,6 +11,9 @@ Three types of files are currently supported:
 
 If you are using [EVTXtract](https://github.com/williballenthin/EVTXtract) output, just stick the .json files in the path specified with -p
 
+## Note
+Report template generation uses the GcHelpers libraries. This provides customized user functions for SQLite that allows for some nice data transformation techniques. After you `setup.py install` this package, you can run `UpdateGeoIpDb.py` which is put into the python scripts directory when gchelpers is installed. This will download the latests GeoLite2 database created by MaxMind for resolving ip addresses. This is needed by any SQLite userfunction using geoip functionality. Thus, if you do not do it, you will see messages in the command line output saying that a geoip function could not be found.
+
 ## Usage
 EventMonkey now has two sub commands. The 'process' command is for processing event files and generating reports while the 'report' command is just for creating reports from the resulting database. You can create your own custom templates and pass the folder to EventMonkey as well.
 ```
