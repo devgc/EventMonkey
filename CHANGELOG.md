@@ -1,6 +1,10 @@
+## [1.4.1] - 2018-02-21
+### Added
+- EVT and EVTX file checks to make sure non-valid event files are not included in the file lists to parse.
+
 ## [1.4.0] - 2018-02-21
 ### Changed
-    - Switched out XmlHandler for xmltodict library. This fixed some occasional key errors in xml handling.
+- Switched out XmlHandler for xmltodict library. This fixed some occasional key errors in xml handling.
 
 ## [1.3.0] - 2017-02-15
 ### Added

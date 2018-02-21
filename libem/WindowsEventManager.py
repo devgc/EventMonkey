@@ -222,7 +222,8 @@ class WindowsEventManager():
                     filename
                 )
                 if (filename.lower().endswith('.evt') or filename.lower().endswith('.evtx')):
-                    self.filelist.append(fullname)
+                    if IsSupportedEventFile(fullname):
+                        self.filelist.append(fullname)
                 elif filename.lower().endswith('.json'):
                     # Check for EvtXtract outputfiles #
                     if IsSupportedEvtXtractFile(fullname):
@@ -485,6 +486,31 @@ def IsSupportedEvtXtractFile(fullname):
                 ))
     
     return result
+    
+def IsSupportedEventFile(fullname):
+    """Check if this file is a proper evt or evtx file."""
+    # Check size first
+    if os.path.getsize(fullname) == 0:
+        WINEVENT_LOGGER.info(u"File has a size of 0. {}".format(fullname))
+        return False
+        
+    if fullname.lower().endswith('.evt'):
+        if pyevt.check_file_signature(fullname):
+            return True
+        else:
+            WINEVENT_LOGGER.info(u"{} does not have EVT signature".format(fullname))
+            return False
+    elif fullname.lower().endswith('.evtx'):
+        if pyevtx.check_file_signature(fullname):
+            return True
+        else:
+            WINEVENT_LOGGER.info(u"{} does not have EVTX signature".format(fullname))
+            return False
+    else:
+        WINEVENT_LOGGER.info(u"Filename does not end with evt or evtx: {}".format(fullname))
+        return False
+    
+    return False
     
 def HandleRecords(filename,options,eventfile_type,record_list,recovered,dbHandler,elastic_actions,progressBar):
     pid = os.getpid()
