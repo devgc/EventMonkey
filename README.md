@@ -14,6 +14,8 @@ If you are using [EVTXtract](https://github.com/williballenthin/EVTXtract) outpu
 ## Note
 Report template generation uses the GcHelpers libraries. This provides customized user functions for SQLite that allows for some nice data transformation techniques. After you `setup.py install` this package, you can run `UpdateGeoIpDb.py` which is put into the python scripts directory when gchelpers is installed. This will download the latest GeoLite2 database created by MaxMind for resolving ip addresses. This is needed by any SQLite userfunction using geoip functionality. Thus, if you do not do it, you will see messages in the command line output saying that a geoip function could not be found when using a template that has a query using the function. That template will then be skipped. 
 
+Also note that a newer sqlite3.dll is required as the 'json_extract' function is required for some of the report queries. Those can be downloaded at https://www.sqlite.org/download.html. Place the sqlite dll in Python's DLLs folder.
+
 ## Usage
 EventMonkey now has two sub commands. The 'process' command is for processing event files and generating reports while the 'report' command is just for creating reports from the resulting database. You can create your own custom templates and pass the folder to EventMonkey as well.
 ```
