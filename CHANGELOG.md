@@ -1,3 +1,7 @@
+## [1.4.0] - 2018-02-21
+### Changed
+    - Switched out XmlHandler for xmltodict library. This fixed some occasional key errors in xml handling.
+
 ## [1.3.0] - 2017-02-15
 ### Added
 - Added Excel template report creation
