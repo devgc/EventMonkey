@@ -14,7 +14,8 @@ import yaml
 import pyevtx
 import pyevt
 
-import XmlHandler
+import xmltodict
+
 import ProgressManager
 import DbHandler
 import elastichandler
@@ -536,26 +537,33 @@ def HandleRecords(filename,options,eventfile_type,record_list,recovered,dbHandle
                 xml_string = None
                 
             if xml_string is not None:
-                list_names = [
-                    'Event.EventData.Data',
-                    'Event.EventData.Binary',
-                ]
-                drec = XmlHandler.GetDictionary(xml_string,force_list=list_names)['Event']
-                jrec = json.dumps(drec)
                 try:
-                    taskid = drec['System']['Task']
-                except:
-                    WINEVENT_LOGGER.debug('[PID: {}][{}] No Task ID for record at index {} (Recovered: {})'.format(pid,filename,i,str(recovered)))
+                    drec = xmltodict.parse(
+                        xml_string,
+                        force_list=['Data','Binary'],
+                        attr_prefix=''
+                    )['Event']
+                    jrec = json.dumps(drec)
+                except Exception as error:
+                    WINEVENT_LOGGER.debug(u"Error parsing XML: {}".format(error))
+                
+                if drec:
+                    try:
+                        taskid = drec['System']['Task']
+                    except:
+                        WINEVENT_LOGGER.debug('[PID: {}][{}] No Task ID for record at index {} (Recovered: {})'.format(pid,filename,i,str(recovered)))
         elif eventfile_type == 'evtxtract':
             # xml stirng is excaped, we need to decode it #
             xml_string = record['xml']
-            list_names = [
-                'Event.EventData.Data',
-                'Event.EventData.Binary',
-            ]
-            # xml stirng is excaped, we need to decode it #
-            drec = XmlHandler.GetDictionary(record['xml'].decode('string_escape'),force_list=list_names)['Event']
-            jrec = json.dumps(drec)
+            try:
+                drec = xmltodict.parse(
+                    xml_string,
+                    force_list=['Data','Binary'],
+                    attr_prefix=''
+                )['Event']
+                jrec = json.dumps(drec)
+            except Exception as error:
+                WINEVENT_LOGGER.debug(u"Error parsing XML: {}".format(error))
         #########################################################################################################
         
         rdic = {}
@@ -679,13 +687,11 @@ def HandleRecords(filename,options,eventfile_type,record_list,recovered,dbHandle
                 if event_id:
                     channel = system_dict.get('Channel',None)
                     if channel:
-                        if channel['#text'] is not None:
-                            try:
-                                we_description = EVENT_ID_DESCRIPTIONS[unicode(drec['System']['Channel']['#text'])][int(drec['System']['EventID']['#text'])]['description']
-                                we_tags = EVENT_ID_DESCRIPTIONS[unicode(drec['System']['Channel']['#text'])][int(drec['System']['EventID']['#text'])]['tags']
-                                pass
-                            except:
-                                pass
+                        try:
+                            we_description = EVENT_ID_DESCRIPTIONS[unicode(drec['System']['Channel'])][int(drec['System']['EventID'])]['description']
+                            we_tags = EVENT_ID_DESCRIPTIONS[unicode(drec['System']['Channel'])][int(drec['System']['EventID'])]['tags']
+                        except:
+                            pass
             
         sql_insert = {
             'we_hash_id':hash_id,
